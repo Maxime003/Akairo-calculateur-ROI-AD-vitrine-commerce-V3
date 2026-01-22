@@ -70,7 +70,23 @@
 #mode_location:checked ~ .toggle-slider { transform: translateX(100%); background: #DE0B19; }
 
 /* === RÉSULTATS === */
-.results-header h3 { text-align: center; font-size: 28px; color: #1A1A1A; margin-bottom: 30px; }
+.results-header h3 { 
+  text-align: center; 
+  font-size: 28px; 
+  color: #1A1A1A; 
+  margin-bottom: 10px; /* Réduit pour laisser place au sous-titre */
+}
+
+/* NOUVEAU : Style du sous-titre HT */
+.results-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
 .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
 
 .result-card { background: #F8F9FA; padding: 24px; border-radius: 8px; border: 2px solid #E0E0E0; }
@@ -118,6 +134,20 @@
 }
 .inaction-text h4 { margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: #1A1A1A; font-weight: 700; }
 .inaction-amount { color: #DE0B19; font-weight: 700; }
+
+/* Footer Sources */
+.sources-footer {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #F0F0F0;
+}
+.sources-footer p {
+  font-size: 11px;
+  color: #999;
+  margin: 4px 0;
+  line-height: 1.4;
+}
 
 @media (max-width: 768px) {
   .results-grid, .roi-grid { grid-template-columns: 1fr; }
