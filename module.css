@@ -1,0 +1,157 @@
+/* === CALCULATEUR ROI AKAIRO - STYLE COMPLET === */
+
+.akairo-calculator-wrapper {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Outfit', sans-serif;
+}
+
+.badge-pro {
+  background: #1A1A1A;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.calculator-header { text-align: center; margin-bottom: 40px; }
+.calculator-header h2 { font-size: 32px; font-weight: 600; color: #1A1A1A; margin: 10px 0; }
+.subtitle { font-size: 16px; color: #666; }
+
+.calculator-form { background: #F8F9FA; padding: 32px; border-radius: 8px; margin-bottom: 32px; }
+.form-group { margin-bottom: 24px; }
+.form-group label { display: block; font-size: 16px; font-weight: 500; color: #1A1A1A; margin-bottom: 8px; }
+.form-group input { width: 100%; padding: 14px 16px; font-size: 16px; border: 2px solid #E0E0E0; border-radius: 6px; box-sizing: border-box; }
+.form-group input:focus { outline: none; border-color: #DE0B19; }
+.helper-text { font-size: 13px; color: #888; margin-top: 5px; font-style: italic; display: block; }
+
+.btn-calculate {
+  width: 100%; padding: 16px; font-size: 18px; font-weight: 600; color: #FFF;
+  background: #DE0B19; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px;
+  transition: all 0.3s ease;
+}
+.btn-calculate:hover { background: #CC0000; transform: translateY(-2px); }
+
+/* === LIGNE INTELLIGENTE & SWITCH === */
+.input-group-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
+.main-input { flex: 1; margin-bottom: 0 !important; }
+.secondary-input { width: 140px; flex-shrink: 0; margin-bottom: 0 !important; }
+
+.label-simulation { color: #666 !important; font-size: 14px !important; display: flex; align-items: center; gap: 4px; }
+.icon-sim { font-size: 12px; filter: grayscale(1); }
+
+.input-suffix-wrapper { position: relative; display: flex; align-items: center; }
+.input-suffix-wrapper input { padding-right: 30px !important; text-align: center; font-weight: 600; color: #DE0B19; border: 1px dashed #BBB !important; }
+.input-suffix-wrapper input:focus { border: 1px solid #DE0B19 !important; background: #FFF; }
+.suffix { position: absolute; right: 12px; color: #999; font-weight: 600; pointer-events: none; }
+
+.toggle-container {
+  position: relative; display: flex; background: #F0F0F0; border-radius: 24px; padding: 4px; width: 260px; user-select: none;
+}
+.toggle-container input { display: none; }
+.toggle-container label {
+  flex: 1; text-align: center; padding: 8px 0; z-index: 2; cursor: pointer;
+  font-size: 13px; font-weight: 600; color: #666; transition: color 0.3s ease; margin: 0 !important;
+}
+.toggle-container input:checked + label { color: #FFF; }
+.toggle-slider {
+  position: absolute; top: 4px; left: 4px; width: 50%; height: calc(100% - 8px);
+  background: #1A1A1A; border-radius: 20px; transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); z-index: 1;
+}
+#mode_location:checked ~ .toggle-slider { transform: translateX(100%); background: #DE0B19; }
+
+/* === RÉSULTATS === */
+.results-header h3 { text-align: center; font-size: 28px; color: #1A1A1A; margin-bottom: 30px; }
+.results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+
+.result-card { background: #F8F9FA; padding: 24px; border-radius: 8px; border: 2px solid #E0E0E0; }
+.result-card.situation-apres { background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%); border-color: #DE0B19; }
+.result-card h4 { font-size: 18px; font-weight: 600; margin: 0 0 20px 0; border-bottom: 2px solid #eee; padding-bottom: 12px; }
+
+.metric { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #E8E8E8; }
+.metric-label { flex: 0 0 50%; width: 50%; font-size: 14px; color: #666; }
+.metric-value { margin-left: auto; font-size: 18px; font-weight: 600; color: #1A1A1A; }
+.metric-value.positive { color: #DE0B19; }
+.metric-badge { display: inline-block; background: #2a850e; color: #FFF; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 12px; margin: 0; }
+.metric.highlight { background: rgba(222, 11, 25, 0.05); padding: 12px; margin: 8px -12px 0; border-radius: 6px; border-bottom: none; }
+
+/* Gain & Tréso */
+.gain-mensuel {
+  text-align: center; background: linear-gradient(135deg, #DE0B19 0%, #B00914 100%);
+  color: #FFF; padding: 30px; border-radius: 12px; margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(222, 11, 25, 0.25);
+}
+.gain-value { font-size: 42px; font-weight: 700; margin: 5px 0; }
+.gain-annuel { font-size: 18px; opacity: 0.9; margin-top: 8px; }
+.gain-annuel strong { font-weight: 700; }
+
+.treso-section {
+  text-align: center; background: #fff; border: 2px solid #1A1A1A;
+  padding: 20px; border-radius: 12px; margin-bottom: 32px;
+}
+.treso-label { font-size: 16px; color: #666; font-weight: 600; text-transform: uppercase; }
+.treso-value { font-size: 36px; font-weight: 700; color: #2a850e; margin: 5px 0; }
+.treso-sub { font-size: 13px; color: #888; font-style: italic; }
+
+/* 4 Cartes Finance */
+.roi-section { background: #F8F9FA; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
+.roi-section h4 { text-align: center; margin: 0 0 24px 0; font-size: 20px; }
+.roi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.roi-card { background: #FFF; padding: 15px 10px; border-radius: 8px; text-align: center; border: 1px solid #E0E0E0; }
+.roi-card.highlight-card { border: 2px solid #DE0B19; background: #FFF5F5; }
+.roi-label { display: block; font-size: 12px; color: #666; margin-bottom: 5px; }
+.roi-value { display: block; font-size: 22px; font-weight: 700; color: #DE0B19; }
+
+/* Inaction */
+.inaction-section {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  background: #FFFFFF; border: 1px solid #DE0B19; padding: 24px 30px; border-radius: 8px; margin-top: 24px;
+}
+.inaction-text h4 { margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: #1A1A1A; font-weight: 700; }
+.inaction-amount { color: #DE0B19; font-weight: 700; }
+
+@media (max-width: 768px) {
+  .results-grid, .roi-grid { grid-template-columns: 1fr; }
+  .input-group-row { flex-direction: column; gap: 20px; }
+  .secondary-input { width: 100%; }
+}
+/* === HOVER EFFECTS SUR LES CARTES FINANCIÈRES === */
+
+.roi-card {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Curseur par défaut pour indiquer que ce n'est pas un bouton cliquable */
+  cursor: default;
+  /* Position relative nécessaire pour l'élévation */
+  position: relative;
+  top: 0;
+}
+
+/* 2. Survol des cartes "Standard" */
+.roi-card:not(.highlight-card):hover {
+  /* La bordure grise devient rouge AKAIRO */
+  border-color: #DE0B19;
+  
+  /* L'élément se soulève légèrement de 5 pixels */
+  top: -5px;
+  
+  /* Une ombre portée teintée de rouge apparaît en dessous */
+  box-shadow: 0 10px 20px rgba(222, 11, 25, 0.15);
+}
+
+/* 3. Survol de la carte "Highlight" (Bénéfice Net, déjà rouge) */
+.roi-card.highlight-card:hover {
+  top: -5px;
+  background-color: #FFFF;
+
+  /* Son ombre est un peu plus marquée pour montrer son importance */
+  box-shadow: 0 10px 20px rgba(222, 11, 25, 0.15);
+}
