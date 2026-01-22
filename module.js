@@ -82,9 +82,11 @@ function calculerROI() {
   let coutsMensuels = getVal('couts_mensuels');
   
   const isLocation = document.getElementById('mode_location')?.checked;
+  let loyerMensuel = 0;
+
   if (isLocation) {
-    const loyer = getVal('loyer_mensuel');
-    coutsMensuels = coutsMensuels + loyer; // Total Charges Mensuelles
+    loyerMensuel = getVal('loyer_mensuel');
+    coutsMensuels = coutsMensuels + loyerMensuel; // Total Charges Mensuelles
     // L'investissement reste l'apport (souvent 0)
   }
 
@@ -114,16 +116,46 @@ function calculerROI() {
   const beneficeNetAn1 = gainAnnuelCA - coutsAnnuels - investissement;
   const pourcentHausseCA = ((caApres - caAvant) / caAvant) * 100;
 
-  // Calcul ROI (Cas spécial Division par zéro)
+  // --- NOUVEAU : CALCUL DE LA DURÉE D'AMORTISSEMENT (Payback Period) ---
+  // Formule : Investissement / CashFlow Net Mensuel (Gain - Coûts totaux)
+  let amortissementText = "";
+  let amortissementColor = "#DE0B19"; // Rouge Akairo par défaut
+
+  // Cashflow Net = L'argent qui reste réellement dans la poche chaque mois grâce à l'écran
+  const cashFlowMensuelNet = gainMensuel - coutsMensuels;
+
+  if (investissement > 0) {
+    // Cas classique (Achat ou Location avec Apport)
+    if (cashFlowMensuelNet <= 0) {
+      // Si on perd de l'argent chaque mois ou qu'on est à 0, on n'amortira jamais l'investissement
+      amortissementText = "Jamais";
+      amortissementColor = "#333";
+    } else {
+      const dureeMois = investissement / cashFlowMensuelNet;
+      
+      if (dureeMois > 60) {
+        amortissementText = "> 5 ans";
+      } else {
+        amortissementText = Math.round(dureeMois) + " mois";
+      }
+    }
+  } else {
+    // Cas Location sans apport (Investissement = 0)
+    // Si on a un cashflow positif tout de suite, c'est immédiat
+    if (cashFlowMensuelNet > 0) {
+      amortissementText = "Immédiat";
+      amortissementColor = "#2a850e"; // Vert car c'est excellent
+    } else {
+      amortissementText = "N/A"; // Pas d'investissement mais perte mensuelle
+    }
+  }
+
+  // ROI Classique (gardé pour le hidden input uniquement)
   let roiAn1 = 0;
-  let roiText = "";
   if (investissement > 0) {
     roiAn1 = (beneficeNetAn1 / investissement) * 100;
-    roiText = formatPourcent(roiAn1);
   } else {
-    // Si investissement 0 => ROI Infini
     roiAn1 = 999999; 
-    roiText = "Infini";
   }
 
   // 4. Affichage DOM
@@ -165,10 +197,11 @@ function calculerROI() {
     elBenef.style.color = beneficeNetAn1 >= 0 ? '#DE0B19' : '#1A1A1A';
   }
 
-  const elRoi = document.getElementById('res_roi');
-  if(elRoi) {
-    elRoi.textContent = roiText;
-    elRoi.style.color = '#DE0B19';
+  // MISE A JOUR : Affichage de l'amortissement
+  const elAmortissement = document.getElementById('res_amortissement');
+  if(elAmortissement) {
+    elAmortissement.textContent = amortissementText;
+    elAmortissement.style.color = amortissementColor;
   }
 
   setText('cout_inaction', formatEuro(coutInaction));
@@ -182,7 +215,7 @@ function calculerROI() {
     setTimeout(() => resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
   }
 
-  // Transfert Données (Hidden Inputs)
+  // Transfert Données (Hidden Inputs) - Note: J'ai laissé roi_previsionnel tel quel pour Hubspot
   const donnees = {
     'trafic_visiteurs_mensuel': trafic,
     'gain_mensuel_estime': Math.round(gainMensuel),
