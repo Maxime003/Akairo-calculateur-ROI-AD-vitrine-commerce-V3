@@ -1,4 +1,5 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <div class="akairo-calculator-wrapper">
   <div class="calculator-header">
@@ -133,6 +134,12 @@
       <div class="treso-sub">Cash-flow généré une fois l'écran et les services payés.</div>
     </div>
 
+    <div class="pdf-action-container" style="text-align: center; margin-bottom: 32px;" data-html2canvas-ignore="true">
+        <button type="button" class="btn-calculate btn-download-pdf" style="background-color: #333; width: auto; padding: 12px 24px; margin-top: 0;">
+            📄 Télécharger le rapport PDF
+        </button>
+    </div>
+
     <div class="roi-section">
       <h4>Performance financière (Année 1)</h4>
       <div class="roi-grid">
@@ -157,7 +164,7 @@
 
     <div class="chart-section" style="background: #FFF; padding: 24px; border-radius: 8px; border: 1px solid #E0E0E0; margin-bottom: 24px;">
       <h4 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 16px;">Zone de Profit (Projection Cumulée sur 3 ans)</h4>
-      <div style="position: relative; height: 300px; width: 100%;">
+      <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
         <canvas id="roiChart"></canvas>
       </div>
     </div>
@@ -167,6 +174,14 @@
         <h4>Le coût de l'attente</h4>
         <p>Si vous attendez <strong>6 mois</strong> avant de vous équiper, vous passez à côté de <span id="cout_inaction" class="inaction-amount">-</span> de chiffre d'affaires potentiel.</p>
       </div>
+    </div>
+
+    <div id="pdf-footer" style="display: none; text-align: center; margin-top: 30px; border-top: 2px solid #DE0B19; padding-top: 20px;">
+        <p style="font-size: 14px; color: #333; margin-bottom: 5px;"><strong>AKAIRO - Solutions d'affichage dynamique</strong></p>
+        <p style="font-size: 12px; color: #666; margin: 0;">
+            Retrouvez nos solutions sur <span style="color: #DE0B19;">www.akairo.fr</span><br>
+            Ceci est une simulation indicative basée sur des moyennes observées.
+        </p>
     </div>
 
     <div class="sources-footer">
