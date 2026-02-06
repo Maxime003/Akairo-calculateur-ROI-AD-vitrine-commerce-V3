@@ -127,6 +127,37 @@
 .roi-label { display: block; font-size: 12px; color: #666; margin-bottom: 5px; }
 .roi-value { display: block; font-size: 22px; font-weight: 700; color: #DE0B19; }
 
+/* Note explicative sous les cartes ROI */
+.roi-disclaimer {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #FFF;
+  border-left: 3px solid #DE0B19;
+  border-radius: 4px;
+}
+
+.roi-disclaimer p {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Mode PDF : garde la note visible mais compacte */
+.pdf-mode .roi-disclaimer {
+  padding: 8px 12px !important;
+  margin-top: 10px !important;
+  page-break-inside: avoid !important;
+}
+
+.pdf-mode .roi-disclaimer p {
+  font-size: 9px !important;
+  line-height: 1.4 !important;
+}
+
+
 /* Inaction */
 .inaction-section {
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
