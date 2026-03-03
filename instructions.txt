@@ -1,0 +1,194 @@
+OK — on part donc sur un **calculateur “impact CA”** (pas un calculateur de rentabilité). Concrètement, ça implique 3 décisions de modélisation :
+
+* **uT (hausse de trafic)** : *pré-remplie à 10%* (modifiable), avec une micro-note “dépend du contexte”.
+* **k** : *fixe* (0,435) pour intégrer le fait que le trafic incrémental convertit moins bien en moyenne (prudence).
+* **marge brute** : *supprimée* → donc **on ne parle plus de ROI / payback “rentabilité”** de manière mathématiquement correcte. On reste sur CA / transactions, et éventuellement “CA additionnel après licence” (ce n’est pas un profit).
+
+---
+
+## 1) Modèle final (sans marge)
+
+### Inputs (UI)
+
+1. `T` = trafic entrant mensuel
+2. `V` = transactions mensuelles
+3. `P` = panier moyen (€)
+4. `uT` = hausse de trafic estimée (%) → **pré-remplie 10%**
+5. `L` = licence mensuelle (€) *(optionnel mais utile)*
+
+### Constante interne (fixe)
+
+* `k = 0.435` (conversion relative du trafic incrémental)
+
+---
+
+## 2) Calculs (étape par étape)
+
+### A) Conversion actuelle (base)
+
+[
+CR_0 = \frac{V}{T}
+]
+(tu peux la calculer et l’afficher en bonus)
+
+### B) Trafic incrémental
+
+[
+\Delta T = T \times uT
+]
+
+### C) Transactions incrémentales (cœur du modèle)
+
+Hypothèse : les entrants incrémentaux convertissent à :
+[
+CR_{new} = CR_0 \times k
+]
+Donc :
+[
+\Delta V = \Delta T \times CR_{new} = \Delta T \times (CR_0 \times k)
+]
+
+Forme simplifiée (équivalente et plus robuste) :
+[
+\Delta V = V \times uT \times k
+]
+
+### D) CA incrémental
+
+[
+\Delta CA = \Delta V \times P
+]
+
+### E) Indicateurs dérivés
+
+* CA annuel incrémental :
+  [
+  \Delta CA_{annuel} = \Delta CA \times 12
+  ]
+* % hausse transactions :
+  [
+  % \Delta V = \frac{\Delta V}{V}\times 100
+  ]
+* % hausse CA :
+  [
+  % \Delta CA = \frac{\Delta CA}{CA_0}\times 100
+  ]
+  avec (CA_0 = V \times P)
+
+### F) “Après licence” (si tu veux garder L)
+
+Tu peux afficher :
+[
+\Delta CA_{net\ licence} = \Delta CA - L
+]
+⚠️ **À nommer correctement** (ex : “CA incrémental – coût licence”), et **à ne pas appeler “bénéfice”**.
+
+---
+
+## 3) Ce que tu mets en avant (résultats les plus pertinents)
+
+Puisqu’on ne calcule plus une rentabilité :
+
+**Bloc principal (3 chiffres max)**
+
+1. **+CA mensuel estimé** (`deltaCA`)
+2. **+CA annuel estimé** (`deltaCA * 12`)
+3. **+Transactions / mois** (`deltaV`) *(souvent plus crédible que le CA seul)*
+
+**Bloc secondaire (preuve / pédagogie)**
+
+* **+Entrées / mois** (`deltaT`)
+* **% hausse transactions** (`pctHausseTransactions`)
+* **% hausse CA** (`pctHausseCA`)
+* (optionnel) **CA incrémental – licence** (`deltaCA - L`) avec libellé prudent
+
+---
+
+## 4) Formules JS claires (prêtes à intégrer)
+
+```js
+// =========================
+// INPUTS (utilisateur)
+// =========================
+const T = traficMensuel;              // entrées / mois
+const V = transactionsMensuelles;     // tickets / mois
+const P = panierMoyen;                // € / ticket
+const uT = hausseTraficPct / 100;     // 10% => 0.10 (pré-rempli)
+const L = licenceMensuelle || 0;      // € / mois (optionnel)
+
+// =========================
+// CONSTANTE FIXE (interne)
+// =========================
+const k = 0.435; // conversion relative du trafic incrémental
+
+// =========================
+// GUARDRAILS
+// =========================
+if (T <= 0 || V < 0 || P <= 0 || uT < 0) {
+  throw new Error("Inputs invalides : vérifie trafic, transactions, panier, hausse trafic.");
+}
+
+// =========================
+// CALCULS
+// =========================
+
+// Conversion actuelle (bonus)
+const CR0 = V / T; // transactions / entrées
+
+// Trafic incrémental
+const deltaT = T * uT;
+
+// Transactions incrémentales (recommandé : forme simplifiée)
+const deltaV = V * uT * k;
+
+// Variante équivalente (si tu veux garder la logique 'deltaT')
+// const deltaV = deltaT * (CR0 * k);
+
+// Transactions après
+const V1 = V + deltaV;
+
+// CA avant / incrémental / après
+const CA0 = V * P;
+const deltaCA = deltaV * P;
+const CA1 = CA0 + deltaCA;
+
+// Annuels
+const deltaCAAnnuel = deltaCA * 12;
+
+// Variations %
+const pctHausseTransactions = (V > 0) ? (deltaV / V) * 100 : 0;
+const pctHausseCA = (CA0 > 0) ? (deltaCA / CA0) * 100 : 0;
+
+// “Après licence” (à libeller prudemment)
+const deltaCAmoinsLicence = deltaCA - L;
+const deltaCAmoinsLicenceAnnuel = deltaCAmoinsLicence * 12;
+
+// =========================
+// OUTPUTS
+// =========================
+const results = {
+  CR0,
+  deltaT,
+  deltaV,
+  V1,
+  CA0,
+  deltaCA,
+  CA1,
+  deltaCAAnnuel,
+  pctHausseTransactions,
+  pctHausseCA,
+  deltaCAmoinsLicence,
+  deltaCAmoinsLicenceAnnuel
+};
+```
+
+---
+
+## 5) Ajustements UI rapides (cohérence)
+
+* Champ “hausse de trafic” : valeur par défaut **10** + micro-texte sous le champ :
+  **“Pré-rempli à 10% : l’impact dépend de l’emplacement, de la visibilité vitrine et de l’animation des contenus.”**
+* Supprimer / renommer tout ce qui s’appelle **ROI / amortissement / bénéfice** (si tu les as encore).
+* Mettre en headline : **+CA mensuel**, **+CA annuel**, **+transactions**.
+
+Si tu veux, je peux te donner une version “patch” ciblée de ton `calculerROI()` actuel (en gardant tes IDs/DOM) pour que tu remplaces uniquement le bloc de calcul sans toucher le design.

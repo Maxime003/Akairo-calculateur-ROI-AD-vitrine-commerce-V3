@@ -1,0 +1,39 @@
+
+CONDITIONS D’UTILISATIONS SIMULATEUR AKAIRO
+
+Article 1 – Champ d’application
+Le présent simulateur est exclusivement destiné à des professionnels agissant dans le cadre de leur activité commerciale, industrielle, artisanale ou libérale.
+Toute utilisation par un consommateur ou à des fins non professionnelles est exclue.
+L’utilisateur déclare agir en qualité de professionnel averti, disposant des compétences et des moyens nécessaires pour apprécier la pertinence économique des estimations générées.
+Article 2 – Objet 
+Le simulateur a pour objet de fournir, à titre strictement indicatif, une modélisation économique prévisionnelle susceptible de résulter de l’acquisition ou de l’installation d’un écran d’affichage dynamique.
+Il permet notamment d’afficher une estimation de chiffre d’affaires additionnel, une estimation de trésorerie nette mensuelle, un retour sur investissement théorique, une durée d’amortissement estimative ainsi qu’une projection cumulative sur plusieurs années, incluant le cas échéant une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet.
+Les estimations sont établies à partir des données déclaratives renseignées par l’utilisateur, combinées à des moyennes constatées auprès de clients professionnels et à des analyses sectorielles relatives au marché du Digital Signage en 2024. Elles reposent sur des hypothèses économiques générales standardisées.
+Article 3 – Nature des estimations
+Le simulateur constitue un outil automatisé de modélisation économique standardisé. Il ne constitue ni un audit personnalisé, ni un conseil financier, juridique, fiscal ou stratégique individualisé, ni une étude de marché spécifique à l’entreprise de l’utilisateur.
+Les indicateurs financiers affichés, notamment le chiffre d’affaires estimé, la trésorerie nette mensuelle, le retour sur investissement, la durée d’amortissement et toute estimation relative à un gain potentiel différé, sont calculés sur la base d’hypothèses théoriques moyennes et de données déclaratives.
+Ils ne tiennent pas compte de l’ensemble des variables propres à chaque entreprise, telles que sa localisation, son environnement concurrentiel, sa stratégie commerciale, la saisonnalité de son activité, la conjoncture économique, les charges réelles d’exploitation ou les modalités concrètes de mise en œuvre du dispositif.
+En conséquence, ces indicateurs présentent un caractère purement prévisionnel et illustratif. Ils ne constituent en aucun cas une garantie de performance, une promesse de rentabilité, un engagement de chiffre d’affaires minimum, une garantie d’amortissement dans un délai déterminé ni une obligation de résultat à la charge de la société. 
+La société est tenue d’une obligation de moyens limitée au bon fonctionnement technique du simulateur.
+Toute décision d’investissement, d’acquisition ou de financement relève de la seule responsabilité de l’utilisateur professionnel. 
+Article 4 – Spécificité relative à l’estimation du « coût de l’attente » 
+Lorsque le simulateur présente une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet, cette estimation correspond exclusivement à une extrapolation théorique du chiffre d’affaires additionnel potentiel calculé selon les hypothèses retenues par la simulation.
+Cette estimation ne constitue pas l’évaluation d’une perte certaine, d’un manque à gagner garanti ni d’un préjudice économique avéré. Elle repose sur la continuité des hypothèses économiques retenues et demeure susceptible de variations significatives selon les conditions réelles d’exploitation.
+L’utilisateur reconnaît expressément que cette estimation a une finalité illustrative et pédagogique et qu’elle ne saurait être interprétée comme la démonstration d’une perte automatique ou inévitable en cas de différé d’investissement. 
+Article 5 – Responsabilité relative aux données saisies
+L’utilisateur professionnel déclare et garantit l’exactitude, la sincérité, la complétude et l’actualité des données économiques qu’il renseigne dans le simulateur. Il reconnaît que toute inexactitude ou approximation est susceptible d’altérer significativement les résultats générés.
+L’utilisateur reconnaît également que toute variation des paramètres réels d’exploitation, notamment en termes de fréquentation, de comportement d’achat, de concurrence, de politique tarifaire ou de coûts d’exploitation, peut affecter les performances effectivement constatées.
+La société ne pourra être tenue responsable d’un résultat erroné ou inadapté résultant de données inexactes, incomplètes ou imprécises, ni d’un écart entre les projections affichées et les résultats réellement obtenus.
+Article 6 – Limitation de responsabilité
+Le simulateur reposant sur des hypothèses économiques générales et des moyennes statistiques, la société ne saurait être tenue responsable des conséquences financières résultant des décisions prises sur la base des estimations générées.
+La responsabilité de la société ne pourra être engagée au titre d’un manque à gagner, d’une perte d’exploitation, d’une perte de chance, d’un retard ou d’une absence d’amortissement, ni au titre de tout préjudice indirect ou immatériel.
+En tout état de cause, la responsabilité totale de la société au titre de l’utilisation du simulateur, toutes causes confondues, ne pourra excéder un montant symbolique correspondant à l’utilisation gratuite de l’outil.
+Article 7 – Absence d’engagement contractuel et consentement 
+L’utilisateur professionnel reconnaît expressément que le simulateur constitue un outil standardisé et qu’il ne saurait se substituer à une analyse personnalisée de sa situation économique. Il déclare ne pas fonder sa décision d’investissement exclusivement sur les estimations générées et reconnaît que celles-ci ne présentent pas un caractère déterminant de son consentement. Il conserve la responsabilité exclusive de son appréciation économique et stratégique.
+Les résultats générés par le simulateur ne constituent ni une offre ferme, ni un engagement unilatéral, ni un élément contractuel opposable. Seuls les engagements expressément stipulés dans un contrat distinct signé entre les parties pourront engager la société.
+
+Article 8 – Traitement des données
+Les informations saisies par l’utilisateur sont utilisées exclusivement pour permettre la génération instantanée du calcul de simulation. Aucune donnée n’est enregistrée dans une base de données, conservée après l’affichage des résultats, exploitée à des fins commerciales, statistiques ou marketing, ni transmise à des tiers. Les informations sont supprimées automatiquement après exécution du calcul. Le simulateur fonctionne sans constitution de fichier client.
+Article 9 – Acceptation 
+L’activation du bouton « Lancer la simulation » après validation de la case dédiée vaut acceptation pleine et entière des présentes conditions ainsi que reconnaissance expresse du caractère hypothétique, indicatif et non garanti des indicateurs générés, y compris de toute estimation relative au retour sur investissement, à la durée d’amortissement et au gain potentiel différé.
+

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"^function|^//\" \"c:\\\\Users\\\\maxime.durand\\\\OneDrive - ID2SON\\\\Bureau\\\\Dev\\\\Calculateur EV\\\\script.js\")"
+    ]
+  }
+}

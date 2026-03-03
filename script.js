@@ -4,6 +4,9 @@
 
 let roiChartInstance = null;
 
+const K_CONVERSION_RELATIVE = 0.435;
+const DEFAULT_UPLIFT_TRAFFIC_PCT = 10;
+
 document.addEventListener('DOMContentLoaded', function() {
   const btnCalculate = document.querySelector('.btn-calculate');
   if (btnCalculate) {
@@ -69,9 +72,10 @@ function calculerROI() {
   const ventes = getVal('ventes');
   const panier = getVal('panier');
   
-  let tauxHausseInput = 33;
+  let tauxHausseInput = DEFAULT_UPLIFT_TRAFFIC_PCT;
   const elTaux = document.getElementById('taux_hausse_trafic');
-  if (elTaux) tauxHausseInput = parseFloat(elTaux.value) || 33;
+  if (elTaux) tauxHausseInput = parseFloat(elTaux.value) || DEFAULT_UPLIFT_TRAFFIC_PCT;
+  tauxHausseInput = Math.max(0, tauxHausseInput);
 
   let investissement = getVal('investissement');
   let coutsMensuels = getVal('couts_mensuels');
@@ -89,55 +93,62 @@ function calculerROI() {
     return;
   }
 
-  const tauxConversion = ventes / trafic;
+  if (ventes > trafic) {
+    alert('Le nombre de transactions ne peut pas dépasser le trafic entrant. Corrigez vos valeurs.');
+    return;
+  }
+
+  // === Nouveau modèle V3.1 "Impact CA" ===
+  const uT = tauxHausseInput / 100;
+  const k = K_CONVERSION_RELATIVE;
+
+  // Base
   const caAvant = ventes * panier;
+  const traficApres = trafic * (1 + uT);
 
-  const multiplicateurTrafic = 1 + (tauxHausseInput / 100);
-  const traficApres = trafic * multiplicateurTrafic;
-  const ventesApres = traficApres * tauxConversion;
-  const panierApres = panier * 1.295; 
-  const caApres = ventesApres * panierApres;
+  // Transactions incrémentales (forme simplifiée, robuste)
+  const deltaV = ventes * uT * k;
+  const ventesApres = Math.min(ventes + deltaV, traficApres); // cap physique : ventes <= trafic
+  const deltaVCap = ventesApres - ventes;
 
-  const gainMensuel = caApres - caAvant;
+  // Panier constant
+  const panierApres = panier;
+
+  // CA
+  const deltaCA = deltaVCap * panier;
+  const caApres = caAvant + deltaCA;
+
+  // Dérivés
+  const gainMensuel = deltaCA;
   const gainAnnuelCA = gainMensuel * 12;
   const coutInaction = gainMensuel * 6;
-  const tresorerieNetteMensuelle = gainMensuel - coutsMensuels;
-  
-  const coutsAnnuels = coutsMensuels * 12;
-  const beneficeNetAn1 = gainAnnuelCA - coutsAnnuels - investissement;
-  const pourcentHausseCA = ((caApres - caAvant) / caAvant) * 100;
+  const caNetCoutsMensuel = gainMensuel - coutsMensuels;
+  const gainAnnuelCANetCouts = caNetCoutsMensuel * 12;
+  const pctHausseCA = (deltaCA / caAvant) * 100;
+  const pctHausseVentes = (deltaVCap / ventes) * 100;
 
-  let amortissementText = "";
-  let amortissementColor = "#DE0B19"; 
-
-  const cashFlowMensuelNet = gainMensuel - coutsMensuels;
+  let couvertureText = "";
+  let couvertureColor = "#DE0B19";
 
   if (investissement > 0) {
-    if (cashFlowMensuelNet <= 0) {
-      amortissementText = "Jamais";
-      amortissementColor = "#333";
+    if (caNetCoutsMensuel <= 0) {
+      couvertureText = "Non atteignable";
+      couvertureColor = "#333";
     } else {
-      const dureeMois = investissement / cashFlowMensuelNet;
+      const dureeMois = investissement / caNetCoutsMensuel;
       if (dureeMois > 60) {
-        amortissementText = "> 5 ans";
+        couvertureText = "> 5 ans";
       } else {
-        amortissementText = Math.round(dureeMois) + " mois";
+        couvertureText = Math.round(dureeMois) + " mois";
       }
     }
   } else {
-    if (cashFlowMensuelNet > 0) {
-      amortissementText = "Immédiat";
-      amortissementColor = "#2a850e"; 
+    if (caNetCoutsMensuel > 0) {
+      couvertureText = "Immédiat";
+      couvertureColor = "#2a850e";
     } else {
-      amortissementText = "N/A"; 
+      couvertureText = "N/A";
     }
-  }
-
-  let roiAn1 = 0;
-  if (investissement > 0) {
-    roiAn1 = (beneficeNetAn1 / investissement) * 100;
-  } else {
-    roiAn1 = 999999; 
   }
 
   const setText = (id, text) => { const el = document.getElementById(id); if(el) el.textContent = text; };
@@ -153,16 +164,17 @@ function calculerROI() {
   setText('ca_apres', formatEuro(caApres));
 
   setText('badge_trafic', '+' + tauxHausseInput + '%');
-  setText('badge_ventes', '+' + tauxHausseInput + '%');
-  setText('badge_ca', '+' + pourcentHausseCA.toFixed(1) + '%');
+  setText('badge_ventes', '+' + (Math.round(pctHausseVentes * 10) / 10).toFixed(1) + '%');
+  setText('badge_panier', '+0%');
+  setText('badge_ca', '+' + (Math.round(pctHausseCA * 10) / 10).toFixed(1) + '%');
 
   setText('gain_mensuel', formatEuro(gainMensuel));
   setText('gain_annuel', formatEuro(gainAnnuelCA));
   
   const elTreso = document.getElementById('tresorerie_nette');
   if (elTreso) {
-    elTreso.textContent = (tresorerieNetteMensuelle > 0 ? '+' : '') + formatEuro(tresorerieNetteMensuelle) + ' /mois';
-    elTreso.style.color = tresorerieNetteMensuelle >= 0 ? '#2a850e' : '#DE0B19';
+    elTreso.textContent = (caNetCoutsMensuel > 0 ? '+' : '') + formatEuro(caNetCoutsMensuel) + ' /mois';
+    elTreso.style.color = caNetCoutsMensuel >= 0 ? '#2a850e' : '#DE0B19';
   }
 
   setText('res_invest', formatEuro(investissement));
@@ -170,14 +182,14 @@ function calculerROI() {
   
   const elBenef = document.getElementById('res_benefice');
   if(elBenef) {
-    elBenef.textContent = (beneficeNetAn1 > 0 ? '+' : '') + formatEuro(beneficeNetAn1);
-    elBenef.style.color = beneficeNetAn1 >= 0 ? '#DE0B19' : '#1A1A1A';
+    elBenef.textContent = (gainAnnuelCANetCouts >= 0 ? '+' : '') + formatEuro(gainAnnuelCANetCouts);
+    elBenef.style.color = gainAnnuelCANetCouts >= 0 ? '#DE0B19' : '#1A1A1A';
   }
 
   const elAmortissement = document.getElementById('res_amortissement');
   if(elAmortissement) {
-    elAmortissement.textContent = amortissementText;
-    elAmortissement.style.color = amortissementColor;
+    elAmortissement.textContent = couvertureText;
+    elAmortissement.style.color = couvertureColor;
   }
 
   setText('cout_inaction', formatEuro(coutInaction));
@@ -195,7 +207,7 @@ function calculerROI() {
   const donnees = {
     'trafic_visiteurs_mensuel': trafic,
     'gain_mensuel_estime': Math.round(gainMensuel),
-    'roi_previsionnel_12_mois': (roiAn1 > 9999) ? 9999 : Math.round(roiAn1),
+    'roi_previsionnel_12_mois': Math.round(pctHausseCA),
     'budget_investissement_estime': investissement
   };
   for (const [key, val] of Object.entries(donnees)) {

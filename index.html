@@ -24,10 +24,10 @@
           <span class="icon-sim">⚡</span> Simulation
         </label>
         <div class="input-suffix-wrapper">
-          <input type="number" id="taux_hausse_trafic" value="33">
+          <input type="number" id="taux_hausse_trafic" value="10">
           <span class="suffix">%</span>
         </div>
-        <span class="helper-text">Hausse estimée</span>
+        <span class="helper-text">Pré-rempli à 10% – dépend de l'emplacement, de la visibilité vitrine et du contenu diffusé.</span>
       </div>
     </div>
 
@@ -113,7 +113,7 @@
         </div>
         <div class="metric">
           <span class="metric-label">Panier</span>
-          <span class="metric-badge">+29,5%</span>
+          <span class="metric-badge" id="badge_panier">+0%</span>
           <span class="metric-value positive" id="panier_apres">-</span>
         </div>
         <div class="metric highlight">
@@ -131,9 +131,9 @@
     </div>
 
     <div class="treso-section" id="bloc_tresorerie" style="display: none;">
-      <div class="treso-label">Trésorerie Nette Mensuelle</div>
+      <div class="treso-label">CA additionnel net des coûts mensuels</div>
       <div class="treso-value" id="tresorerie_nette">-</div>
-      <div class="treso-sub">Cash-flow généré une fois l'écran et les services payés.</div>
+      <div class="treso-sub">CA incrémental mensuel une fois les coûts récurrents déduits.</div>
     </div>
 
     <div class="pdf-action-container" style="text-align: center; margin-bottom: 32px;" data-html2canvas-ignore="true">
@@ -143,7 +143,7 @@
     </div>
 
     <div class="roi-section">
-      <h4>Performance financière potentielle (Année 1)</h4>
+      <h4>Lecture budgétaire (indicative)</h4>
       <div class="roi-grid">
         <div class="roi-card">
           <span class="roi-label">Investissement</span>
@@ -154,21 +154,21 @@
           <span class="roi-value" id="res_ca_1an">-</span>
         </div>
         <div class="roi-card highlight-card">
-          <span class="roi-label">ROI</span>
+          <span class="roi-label">CA additionnel net / an</span>
           <span class="roi-value" id="res_benefice">-</span>
         </div>
         <div class="roi-card">
-          <span class="roi-label">Durée d'amortissement</span>
+          <span class="roi-label">Couverture du coût initial par CA net (indicatif, hors marge)</span>
           <span class="roi-value" id="res_amortissement">-</span>
         </div>
       </div>
       <div class="roi-disclaimer">
-    <p>* Le ROI et la durée d'amortissement sont calculés sur la base de l'investissement initial (matériel + installation). Les gains potentiels présentés correspondent au chiffre d'affaires additionnel généré.</p>
+    <p>* Le CA additionnel net des coûts n'est pas un profit ou un cash-flow : la marge n'est pas prise en compte. La "couverture du coût initial" indique en combien de mois le CA incrémental net des coûts récurrents couvrirait l'investissement — c'est un indicateur de dimensionnement, pas un calcul de rentabilité. Simulation indicative, sans engagement.</p>
   </div>
     </div>
 
     <div class="chart-section" style="background: #FFF; padding: 24px; border-radius: 8px; border: 1px solid #E0E0E0; margin-bottom: 24px;">
-      <h4 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 16px;">Zone de Profit potentiel (Projection Cumulée sur 3 ans)</h4>
+      <h4 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 16px;">Projection cumulée du CA additionnel (sur 3 ans)</h4>
       <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
         <canvas id="roiChart"></canvas>
       </div>
