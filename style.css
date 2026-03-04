@@ -1,4 +1,4 @@
-/* === CALCULATEUR ROI AKAIRO - STYLE COMPLET === */
+/* === CALCULATEUR ROI AKAIRO - STYLE COMPLET V3.1 === */
 
 .akairo-calculator-wrapper {
   max-width: 1000px;
@@ -28,11 +28,15 @@
 .subtitle { font-size: 16px; color: #666; }
 
 .calculator-form { background: #F8F9FA; padding: 32px; border-radius: 8px; margin-bottom: 32px; }
+.form-section-title { margin: 0 0 16px 0; font-size: 18px; color: #333; font-weight: 600; }
+.form-divider { margin: 32px 0; border: 0; border-top: 1px solid #E0E0E0; }
+.finance-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.finance-header .form-section-title { margin-bottom: 0; }
 .form-group { margin-bottom: 24px; }
 .form-group label { display: block; font-size: 16px; font-weight: 500; color: #1A1A1A; margin-bottom: 8px; }
 .form-group input { width: 100%; padding: 14px 16px; font-size: 16px; border: 2px solid #E0E0E0; border-radius: 6px; box-sizing: border-box; }
 .form-group input:focus { outline: none; border-color: #DE0B19; }
-.helper-text { font-size: 13px; color: #888; margin-top: 5px; font-style: italic; display: block; }
+.helper-text { font-size: 12px; color: #888; margin-top: 5px; font-style: italic; display: block; line-height: 1.5; }
 
 .btn-calculate {
   width: 100%; padding: 16px; font-size: 18px; font-weight: 600; color: #FFF;
@@ -43,15 +47,15 @@
 
 /* === LIGNE INTELLIGENTE & SWITCH === */
 .input-group-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
-.main-input { flex: 1; margin-bottom: 0 !important; }
-.secondary-input { width: 140px; flex-shrink: 0; margin-bottom: 0 !important; }
+.main-input { flex: 1; margin-bottom: 0; }
+.secondary-input { width: 160px; flex-shrink: 0; margin-bottom: 0; }
 
-.label-simulation { color: #666 !important; font-size: 14px !important; display: flex; align-items: center; gap: 4px; }
+.form-group .label-simulation { color: #666; font-size: 14px; display: flex; align-items: center; gap: 4px; }
 .icon-sim { font-size: 12px; filter: grayscale(1); }
 
 .input-suffix-wrapper { position: relative; display: flex; align-items: center; }
-.input-suffix-wrapper input { padding-right: 30px !important; text-align: center; font-weight: 600; color: #DE0B19; border: 1px dashed #BBB !important; }
-.input-suffix-wrapper input:focus { border: 1px solid #DE0B19 !important; background: #FFF; }
+.form-group .input-suffix-wrapper input { padding-right: 30px; text-align: center; font-weight: 600; color: #DE0B19; border: 1px dashed #BBB; }
+.form-group .input-suffix-wrapper input:focus { border: 1px solid #DE0B19; background: #FFF; }
 .suffix { position: absolute; right: 12px; color: #999; font-weight: 600; pointer-events: none; }
 
 .toggle-container {
@@ -60,7 +64,7 @@
 .toggle-container input { display: none; }
 .toggle-container label {
   flex: 1; text-align: center; padding: 8px 0; z-index: 2; cursor: pointer;
-  font-size: 13px; font-weight: 600; color: #666; transition: color 0.3s ease; margin: 0 !important;
+  font-size: 13px; font-weight: 600; color: #666; transition: color 0.3s ease; margin: 0;
 }
 .toggle-container input:checked + label { color: #FFF; }
 .toggle-slider {
@@ -70,22 +74,8 @@
 #mode_location:checked ~ .toggle-slider { transform: translateX(100%); background: #DE0B19; }
 
 /* === RÉSULTATS === */
-.results-header h3 { 
-  text-align: center; 
-  font-size: 28px; 
-  color: #1A1A1A; 
-  margin-bottom: 10px; /* Réduit pour laisser place au sous-titre */
-}
-
-/* Style du sous-titre HT */
-.results-subtitle {
-  text-align: center;
-  font-size: 14px;
-  color: #888;
-  font-style: italic;
-  margin-top: 0;
-  margin-bottom: 30px;
-}
+.results-header h3 { text-align: center; font-size: 28px; color: #1A1A1A; margin-bottom: 10px; }
+.results-subtitle { text-align: center; font-size: 14px; color: #888; font-style: italic; margin-top: 0; margin-bottom: 30px; }
 
 .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
 
@@ -100,7 +90,7 @@
 .metric-badge { display: inline-block; background: #2a850e; color: #FFF; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 12px; margin: 0; }
 .metric.highlight { background: rgba(222, 11, 25, 0.05); padding: 12px; margin: 8px -12px 0; border-radius: 6px; border-bottom: none; }
 
-/* Gain & Tréso */
+/* === GAIN === */
 .gain-mensuel {
   text-align: center; background: linear-gradient(135deg, #DE0B19 0%, #B00914 100%);
   color: #FFF; padding: 30px; border-radius: 12px; margin-bottom: 20px;
@@ -110,55 +100,93 @@
 .gain-annuel { font-size: 18px; opacity: 0.9; margin-top: 8px; }
 .gain-annuel strong { font-weight: 700; }
 
+/* === BLOC CA NET DE COÛTS === */
 .treso-section {
   text-align: center; background: #fff; border: 2px solid #1A1A1A;
   padding: 20px; border-radius: 12px; margin-bottom: 32px;
 }
-.treso-label { font-size: 16px; color: #666; font-weight: 600; text-transform: uppercase; }
-.treso-value { font-size: 36px; font-weight: 700; color: #2a850e; margin: 5px 0; }
+.treso-label { font-size: 14px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; line-height: 1.4; }
+.treso-value { font-size: 36px; font-weight: 700; color: #2a850e; margin: 8px 0 5px; }
 .treso-sub { font-size: 13px; color: #888; font-style: italic; }
 
-/* 4 Cartes Finance */
+/* === SECTION BUDGÉTAIRE === */
 .roi-section { background: #F8F9FA; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
 .roi-section h4 { text-align: center; margin: 0 0 24px 0; font-size: 20px; }
 .roi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.roi-card { background: #FFF; padding: 15px 10px; border-radius: 8px; text-align: center; border: 1px solid #E0E0E0; }
+.roi-card { background: #FFF; padding: 15px 10px; border-radius: 8px; text-align: center; border: 1px solid #E0E0E0; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: default; position: relative; top: 0; }
 .roi-card.highlight-card { border: 2px solid #DE0B19; background: #FFF5F5; }
-.roi-label { display: block; font-size: 12px; color: #666; margin-bottom: 5px; }
+.roi-label { display: block; font-size: 11px; color: #666; margin-bottom: 6px; line-height: 1.4; min-height: 28px; }
 .roi-value { display: block; font-size: 22px; font-weight: 700; color: #DE0B19; }
+.roi-sublabel { display: block; font-size: 10px; color: #AAA; margin-top: 4px; font-style: italic; line-height: 1.3; }
 
-/* Note explicative sous les cartes ROI */
-.roi-disclaimer {
-  margin-top: 16px;
-  padding: 12px 16px;
+.roi-disclaimer { margin-top: 16px; padding: 12px 16px; background: #FFF; border-left: 3px solid #DE0B19; border-radius: 4px; }
+.roi-disclaimer p { font-size: 11px; line-height: 1.5; color: #666; margin: 0; font-style: italic; text-align: center; }
+
+/* === GRAPHIQUE — COUVERTURE INVESTISSEMENT === */
+.chart-section {
   background: #FFF;
-  border-left: 3px solid #DE0B19;
-  border-radius: 4px;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid #E0E0E0;
+  margin-bottom: 24px;
 }
 
-.roi-disclaimer p {
-  font-size: 11px;
-  line-height: 1.5;
-  color: #666;
-  margin: 0;
-  font-style: italic;
+.chart-section h4 {
   text-align: center;
+  margin: 0 0 6px 0;
+  color: #1A1A1A;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-/* Mode PDF : garde la note visible mais compacte */
-.pdf-mode .roi-disclaimer {
-  padding: 8px 12px !important;
-  margin-top: 10px !important;
-  page-break-inside: avoid !important;
+/* Légende personnalisée au-dessus du canvas */
+.chart-legend-custom {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
 }
 
-.pdf-mode .roi-disclaimer p {
-  font-size: 9px !important;
-  line-height: 1.4 !important;
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #555;
+  font-weight: 500;
 }
 
+.legend-item::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
 
-/* Inaction */
+.legend-rouge::before { background: #DE0B19; }
+.legend-noir::before  { background: #1A1A1A; border-top: 2px dashed #1A1A1A; height: 0; }
+.legend-vert::before  { background: #2a850e; width: 10px; height: 10px; border-radius: 50%; }
+
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+/* Légende caption sous le graphique */
+.chart-caption {
+  margin: 14px 0 0;
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* === INACTION === */
 .inaction-section {
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
   background: #FFFFFF; border: 1px solid #DE0B19; padding: 24px 30px; border-radius: 8px; margin-top: 24px;
@@ -166,267 +194,117 @@
 .inaction-text h4 { margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: #1A1A1A; font-weight: 700; }
 .inaction-amount { color: #DE0B19; font-weight: 700; }
 
-/* Footer Sources */
-.sources-footer {
-  text-align: center;
-  margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid #F0F0F0;
-}
-.sources-footer p {
-  font-size: 11px;
-  color: #999;
-  margin: 4px 0;
-  line-height: 1.4;
-}
+/* === FOOTER SOURCES === */
+.sources-footer { text-align: center; margin-top: 32px; padding-top: 16px; border-top: 1px solid #F0F0F0; }
+.sources-footer p { font-size: 11px; color: #999; margin: 4px 0; line-height: 1.4; }
 
-@media (max-width: 768px) {
-  .results-grid, .roi-grid { grid-template-columns: 1fr; }
-  .input-group-row { flex-direction: column; gap: 20px; }
-  .secondary-input { width: 100%; }
-}
-/* === HOVER EFFECTS SUR LES CARTES FINANCIÈRES === */
-
-.roi-card {
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  /* Curseur par défaut pour indiquer que ce n'est pas un bouton cliquable */
-  cursor: default;
-  /* Position relative nécessaire pour l'élévation */
-  position: relative;
-  top: 0;
-}
-
-/* 2. Survol des cartes "Standard" */
-.roi-card:not(.highlight-card):hover {
-  /* La bordure grise devient rouge AKAIRO */
-  border-color: #DE0B19;
-  
-  /* L'élément se soulève légèrement de 5 pixels */
-  top: -5px;
-  
-  /* Une ombre portée teintée de rouge apparaît en dessous */
-  box-shadow: 0 10px 20px rgba(222, 11, 25, 0.15);
-}
-
-/* 3. Survol de la carte "Highlight" (Bénéfice Net, déjà rouge) */
-.roi-card.highlight-card:hover {
-  top: -5px;
-  background-color: #FFFF;
-
-  /* Son ombre est un peu plus marquée pour montrer son importance */
-  box-shadow: 0 10px 20px rgba(222, 11, 25, 0.15);
-}
-
+/* === HOVER CARTES BUDGÉTAIRES === */
+.roi-card:not(.highlight-card):hover { border-color: #DE0B19; top: -5px; box-shadow: 0 10px 20px rgba(222, 11, 25, 0.15); }
+.roi-card.highlight-card:hover { top: -5px; background-color: #FFFFFF; box-shadow: 0 10px 20px rgba(222, 11, 25, 0.15); }
 
 /* ========================================= */
-/* === AJOUTS POUR LA FONCTIONNALITÉ PDF === */
-/* ========================================= */
-
-.pdf-action-container {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-/* Style spécifique pour le bouton PDF */
-.btn-download-pdf {
-  background: #2C3E50 !important; /* Gris sombre pro */
-  width: auto !important; 
-  min-width: 250px;
-  margin-top: 0;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.btn-download-pdf:hover {
-  background: #1A252F !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
-}
-
-/* EMPÊCHER LES COUPURES DE PAGE DANS LE PDF */
-.result-card, 
-.gain-mensuel, 
-.treso-section,
-.roi-section,
-.chart-section,
-.inaction-section {
-  break-inside: avoid;       /* CSS standard */
-  page-break-inside: avoid;  /* Pour html2pdf */
-}
-
-/* Footer spécifique au PDF (visible uniquement lors du rendu) */
-#pdf-footer {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 2px solid #DE0B19;
-  text-align: center;
-}
-
-/* === MODE PDF ACTIF (Appliqué par JS lors de la génération) === */
-.pdf-mode {
-  /* 1. Reset visuel */
-  background-color: #FFFFFF !important;
-  opacity: 1 !important;
-  animation: none !important;
-  box-shadow: none !important;
-  transform: none !important;
-
-  /* 2. Format A4 standard (largeur contenu) */
-  width: 520px !important; 
-  min-width: 520px !important;
-  max-width: 520px !important;
-  
-  /* 3. Centrage et typo */
-  margin: 0 auto !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-  font-family: Helvetica, Arial, sans-serif !important;
-}
-
-/* Force l'affichage vertical pour la grille de résultats principaux */
-.pdf-mode .results-grid {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 20px !important;
-}
-
-/* Force l'affichage en 2x2 pour la grille ROI (pour gagner de la place en hauteur) */
-.pdf-mode .roi-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important; /* 2 colonnes au lieu de 4 */
-  gap: 15px !important;
-}
-
-/* Ajustements de taille pour le PDF */
-.pdf-mode .result-card {
-  padding: 15px !important;
-  background-color: #F8F9FA !important;
-}
-.pdf-mode .result-card.situation-apres {
-  background: #FFF5F5 !important;
-}
-
-.pdf-mode .gain-mensuel {
-  padding: 20px !important;
-  /* Force un saut de page après le gain si nécessaire, ou on laisse le flux se faire */
-  margin-bottom: 20px !important;
-}
-.pdf-mode .gain-value {
-  font-size: 32px !important; /* Réduit un peu pour le PDF */
-}
-
-/* Gestion du graphique */
-.pdf-mode .chart-container {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-.pdf-mode canvas {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-  display: block !important;
-}
-.pdf-mode .chart-section {
-  border: none !important;
-  padding: 10px 0 !important;
-}
-
-/* Nettoyage footer */
-.pdf-mode .sources-footer {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  page-break-after: avoid !important;
-}
-/* ========================================= */
-/* === MODE PDF (CORRECTIF BORDS & PAGE 2) === */
+/* === PDF BOUTON & CONTAINER             === */
 /* ========================================= */
 
 .pdf-action-container { text-align: center; margin-bottom: 32px; }
 
 .btn-download-pdf {
-  background: #2C3E50 !important; color: #fff !important;
-  width: auto !important; min-width: 250px; margin-top: 0; display: inline-block;
+  background: #2C3E50;
+  width: auto;
+  min-width: 250px;
+  margin-top: 0;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.btn-download-pdf:hover {
+  background: #1A252F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
 }
 
-#pdf-footer {
-  margin-top: 20px; padding-top: 10px; border-top: 1px solid #DE0B19; text-align: center;
+/* Empêcher les coupures de page */
+.result-card, .gain-mensuel, .treso-section, .roi-section, .chart-section, .inaction-section {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
-/* === CONFIGURATION GLOBALE PDF === */
+#pdf-footer { margin-top: 30px; padding-top: 20px; border-top: 2px solid #DE0B19; text-align: center; }
+#group_loyer label { color: #DE0B19; }
+#group_loyer input { border-color: #DE0B19; }
+.pdf-footer-title { font-size: 14px; color: #333; margin-bottom: 5px; }
+.pdf-footer-sub { font-size: 12px; color: #666; margin: 0; }
+.pdf-footer-url { color: #DE0B19; }
+
+/* ========================================= */
+/* === MODE PDF ACTIF                     === */
+/* ========================================= */
+
 .pdf-mode {
   background-color: #FFFFFF !important;
+  opacity: 1 !important; animation: none !important; box-shadow: none !important; transform: none !important;
   width: 540px !important; min-width: 540px !important; max-width: 540px !important;
   margin: 0 auto !important; padding: 0 10px !important;
   box-sizing: border-box !important;
   font-family: Helvetica, Arial, sans-serif !important;
 }
 
-/* 1. GRILLE CÔTE À CÔTE */
-.pdf-mode .results-grid {
-  display: grid !important; grid-template-columns: 1fr 1fr !important;
-  gap: 15px !important; margin-bottom: 15px !important;
-}
+.pdf-mode .results-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 15px !important; margin-bottom: 15px !important; }
+.pdf-mode .result-card { padding: 15px !important; background-color: #F8F9FA !important; border: 1px solid #ddd !important; }
+.pdf-mode .result-card.situation-apres { background: #FFF5F5 !important; }
+.pdf-mode .metric.highlight { margin-left: 0 !important; margin-right: 0 !important; margin-top: 5px !important; width: 100% !important; box-sizing: border-box !important; border-radius: 4px !important; padding: 8px 10px !important; }
 
-.pdf-mode .result-card {
-  padding: 15px !important; 
-  background-color: #F8F9FA !important;
-  border: 1px solid #ddd !important;
-}
-
-/* --- CORRECTIF CLÉ : EMPÊCHER LA DERNIÈRE LIGNE DE TOUCHER LES BORDS --- */
-.pdf-mode .metric.highlight {
-  /* On annule les marges négatives du web pour que ça rentre dans la carte */
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  margin-top: 5px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  border-radius: 4px !important;
-  /* On s'assure que le texte ne colle pas aux bords du fond rouge */
-  padding: 8px 10px !important; 
-}
-
-/* Typographie réduite */
 .pdf-mode h3 { font-size: 16px !important; margin-bottom: 5px !important; }
 .pdf-mode .results-subtitle { margin-bottom: 15px !important; font-size: 11px !important; }
 .pdf-mode .result-card h4 { font-size: 13px !important; margin-bottom: 10px !important; }
-
 .pdf-mode .metric { padding: 5px 0 !important; }
 .pdf-mode .metric-label { font-size: 10px !important; }
 .pdf-mode .metric-value { font-size: 12px !important; }
 .pdf-mode .metric-badge { display: none !important; }
 
-/* 2. BLOCS FINANCIERS QUI REMONTENT PAGE 1 */
-.pdf-mode .gain-mensuel {
-  padding: 15px !important; margin-bottom: 15px !important;
-  page-break-inside: avoid !important;
-}
+.pdf-mode .gain-mensuel { padding: 15px !important; margin-bottom: 15px !important; page-break-inside: avoid !important; }
 .pdf-mode .gain-value { font-size: 28px !important; margin: 0 !important; }
 .pdf-mode .gain-annuel { font-size: 12px !important; margin-top: 5px !important; }
 
-.pdf-mode .roi-section {
-  padding: 10px !important; margin-bottom: 0 !important; margin-top: 0 !important;
-  page-break-inside: avoid !important;
-}
-.pdf-mode .roi-section h4 { font-size: 14px !important; margin-bottom: 10px !important; }
-.pdf-mode .roi-grid { gap: 8px !important; }
-.pdf-mode .roi-card { padding: 8px 2px !important; }
-.pdf-mode .roi-label { font-size: 9px !important; }
-.pdf-mode .roi-value { font-size: 14px !important; }
+.pdf-mode .treso-section { padding: 12px !important; margin-bottom: 12px !important; }
+.pdf-mode .treso-label { font-size: 11px !important; letter-spacing: 0.5px !important; }
+.pdf-mode .treso-value { font-size: 24px !important; margin: 4px 0 !important; }
 
-/* 3. GRAPHIQUE FORCÉ EN PAGE 2 */
+.pdf-mode .roi-section { padding: 10px !important; margin-bottom: 0 !important; margin-top: 0 !important; page-break-inside: avoid !important; }
+.pdf-mode .roi-section h4 { font-size: 14px !important; margin-bottom: 10px !important; }
+.pdf-mode .roi-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+.pdf-mode .roi-card { padding: 8px 6px !important; }
+.pdf-mode .roi-label { font-size: 9px !important; min-height: auto !important; margin-bottom: 3px !important; }
+.pdf-mode .roi-sublabel { font-size: 8px !important; margin-top: 2px !important; }
+.pdf-mode .roi-value { font-size: 14px !important; }
+.pdf-mode .roi-disclaimer { padding: 8px 12px !important; margin-top: 10px !important; page-break-inside: avoid !important; }
+.pdf-mode .roi-disclaimer p { font-size: 9px !important; line-height: 1.4 !important; }
+
+/* Graphique → page 2 */
 .pdf-mode .chart-section {
   display: block !important;
-  /* Force le saut de page AVANT le graphique */
-  page-break-before: always !important; 
+  page-break-before: always !important;
   break-before: page !important;
-  
-  margin-top: 30px !important; /* Marge en haut de la page 2 */
+  margin-top: 30px !important;
   border: none !important;
+  padding: 10px 0 !important;
 }
-.pdf-mode .chart-container { height: 250px !important; }
+.pdf-mode .chart-section h4 { font-size: 13px !important; margin-bottom: 8px !important; }
+.pdf-mode .chart-legend-custom { gap: 12px !important; margin-bottom: 10px !important; }
+.pdf-mode .legend-item { font-size: 10px !important; }
+.pdf-mode .chart-container { height: 240px !important; }
+.pdf-mode canvas { width: 100% !important; height: auto !important; max-width: 100% !important; display: block !important; }
+.pdf-mode .chart-caption { font-size: 9px !important; margin-top: 8px !important; }
 
-/* Éléments cachés */
-.pdf-mode .helper-text, .pdf-mode .btn-calculate { display: none !important; }
-/* Empêcher les coupures internes */
-.result-card, .gain-mensuel, .roi-section { break-inside: avoid; }
+/* Éléments masqués en PDF */
+.pdf-mode .helper-text { display: none !important; }
+.pdf-mode .btn-calculate { display: none !important; }
+.pdf-mode .sources-footer { margin-bottom: 0 !important; padding-bottom: 0 !important; page-break-after: avoid !important; }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .results-grid { grid-template-columns: 1fr; }
+  .roi-grid { grid-template-columns: 1fr 1fr; }
+  .input-group-row { flex-direction: column; gap: 20px; }
+  .secondary-input { width: 100%; }
+  .chart-legend-custom { gap: 12px; }
+}

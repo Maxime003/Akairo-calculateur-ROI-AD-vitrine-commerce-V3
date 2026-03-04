@@ -1,7 +1,7 @@
+<link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+<script defer src="script.js"></script>
 
 <div class="akairo-calculator-wrapper">
   <div class="calculator-header">
@@ -9,9 +9,9 @@
   </div>
 
   <div class="calculator-form">
-    
-    <h4 style="margin: 0 0 16px 0; font-size: 18px; color: #333;">1. Données du point de vente</h4>
-    
+
+    <h4 class="form-section-title">1. Données du point de vente</h4>
+
     <div class="input-group-row">
       <div class="form-group main-input">
         <label for="trafic">Trafic mensuel actuel</label>
@@ -27,7 +27,7 @@
           <input type="number" id="taux_hausse_trafic" value="10">
           <span class="suffix">%</span>
         </div>
-        <span class="helper-text">Pré-rempli à 10% – dépend de l'emplacement, de la visibilité vitrine et du contenu diffusé.</span>
+        <span class="helper-text">Pré-rempli à 10% : dépend de l'emplacement, de la visibilité vitrine et de l'animation des contenus.</span>
       </div>
     </div>
 
@@ -43,18 +43,18 @@
       <span class="helper-text">Montant moyen dépensé par client</span>
     </div>
 
-    <hr style="margin: 32px 0; border: 0; border-top: 1px solid #e0e0e0;">
+    <hr class="form-divider">
 
-    <div class="finance-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-      <h4 style="margin: 0; font-size: 18px; color: #333;">2. Offre & Financement</h4>
-      
+    <div class="finance-header">
+      <h4 class="form-section-title">2. Offre & Financement</h4>
+
       <div class="toggle-container">
-        <input type="radio" id="mode_achat" name="financement" value="achat" checked onchange="toggleFinancement()">
+        <input type="radio" id="mode_achat" name="financement" value="achat" checked>
         <label for="mode_achat">Achat Comptant</label>
-        
-        <input type="radio" id="mode_location" name="financement" value="location" onchange="toggleFinancement()">
+
+        <input type="radio" id="mode_location" name="financement" value="location">
         <label for="mode_location">Location RSE</label>
-        
+
         <div class="toggle-slider"></div>
       </div>
     </div>
@@ -68,15 +68,15 @@
 
       <div class="input-group-row">
         <div class="form-group main-input" id="group_loyer" style="display: none;">
-          <label for="loyer_mensuel" style="color: #DE0B19;">Loyer Mensuel RSE (€)</label>
-          <input type="number" id="loyer_mensuel" value="145" style="border-color: #DE0B19;">
+          <label for="loyer_mensuel">Loyer Mensuel RSE (€)</label>
+          <input type="number" id="loyer_mensuel" value="145">
           <span class="helper-text">Matériel + Services inclus</span>
         </div>
 
         <div class="form-group main-input">
           <label id="label_couts" for="couts_mensuels">Coûts mensuels récurrents (€)</label>
-          <input type="number" id="couts_mensuels" name="couts_mensuels" value="100">
-          <span id="helper_couts" class="helper-text">Abonnement IDPLAY + Maintenance</span>
+          <input type="number" id="couts_mensuels" name="couts_mensuels" value="29">
+          <span id="helper_couts" class="helper-text">Licence IDPLAY mensuelle</span>
         </div>
       </div>
     </div>
@@ -84,12 +84,17 @@
     <button type="button" class="btn-calculate">Générer l'analyse financière</button>
   </div>
 
+  <!-- ============================== -->
+  <!-- SECTION RÉSULTATS              -->
+  <!-- ============================== -->
   <div class="calculator-results" id="results" style="display: none;">
+
     <div class="results-header">
       <h3>Analyse de Performance</h3>
       <p class="results-subtitle">Les prix indiqués sont Hors Taxe (HT)</p>
     </div>
 
+    <!-- Cartes Avant / Après -->
     <div class="results-grid">
       <div class="result-card situation-avant">
         <h4>Actuellement</h4>
@@ -103,101 +108,122 @@
         <h4>Projection AKAIRO</h4>
         <div class="metric">
           <span class="metric-label">Trafic</span>
-          <span class="metric-badge" id="badge_trafic">+33%</span>
+          <span class="metric-badge" id="badge_trafic">+10%</span>
           <span class="metric-value positive" id="trafic_apres">-</span>
         </div>
         <div class="metric">
           <span class="metric-label">Ventes</span>
-          <span class="metric-badge" id="badge_ventes">+33%</span>
+          <span class="metric-badge" id="badge_ventes">+4,4%</span>
           <span class="metric-value positive" id="ventes_apres">-</span>
         </div>
         <div class="metric">
           <span class="metric-label">Panier</span>
-          <span class="metric-badge" id="badge_panier">+0%</span>
+          <!-- Badge masqué : le panier est inchangé dans le modèle V3.1 -->
+          <span class="metric-badge" id="badge_panier" style="display: none;">+0%</span>
           <span class="metric-value positive" id="panier_apres">-</span>
         </div>
         <div class="metric highlight">
           <span class="metric-label">CA Mensuel</span>
-          <span class="metric-badge" id="badge_ca">+72,2%</span>
+          <span class="metric-badge" id="badge_ca">+4,4%</span>
           <span class="metric-value positive" id="ca_apres">-</span>
         </div>
       </div>
     </div>
 
+    <!-- Gain mensuel / annuel -->
     <div class="gain-mensuel">
-      <div class="gain-label">Gain mensuel de chiffre d'affaires HT</div>
+      <div class="gain-label">CA additionnel potentiel mensuel HT</div>
       <div class="gain-value" id="gain_mensuel">-</div>
-      <div class="gain-annuel">Soit <strong id="gain_annuel">-</strong> de CA additionnel espéré/ an</div>
+      <div class="gain-annuel">Soit <strong id="gain_annuel">-</strong> de CA additionnel potentiel / an</div>
     </div>
 
+    <!-- Bloc CA net de coûts (visible en mode location) -->
     <div class="treso-section" id="bloc_tresorerie" style="display: none;">
       <div class="treso-label">CA additionnel net des coûts mensuels</div>
       <div class="treso-value" id="tresorerie_nette">-</div>
-      <div class="treso-sub">CA incrémental mensuel une fois les coûts récurrents déduits.</div>
+      <div class="treso-sub">CA incrémental généré une fois l'écran et les services déduits.</div>
     </div>
 
-    <div class="pdf-action-container" style="text-align: center; margin-bottom: 32px;" data-html2canvas-ignore="true">
-        <button type="button" class="btn-calculate btn-download-pdf" style="background-color: #333; width: auto; padding: 12px 24px; margin-top: 0;">
-            📄 Télécharger le rapport PDF
-        </button>
+    <!-- Bouton PDF -->
+    <div class="pdf-action-container" data-html2canvas-ignore="true">
+      <button type="button" class="btn-calculate btn-download-pdf">
+        📄 Télécharger le rapport PDF
+      </button>
     </div>
 
+    <!-- Section indicateurs clés -->
     <div class="roi-section">
-      <h4>Lecture budgétaire (indicative)</h4>
+      <h4>Ce que ça change concrètement</h4>
       <div class="roi-grid">
         <div class="roi-card">
-          <span class="roi-label">Investissement</span>
-          <span class="roi-value" style="color: #1A1A1A;" id="res_invest">-</span>
-        </div>
-        <div class="roi-card">
-          <span class="roi-label">Chiffre d'Affaires</span>
-          <span class="roi-value" id="res_ca_1an">-</span>
+          <span class="roi-label">Ventes supplémentaires / mois</span>
+          <span class="roi-value" id="res_delta_ventes">-</span>
+          <span class="roi-sublabel">transactions de plus chaque mois</span>
         </div>
         <div class="roi-card highlight-card">
-          <span class="roi-label">CA additionnel net / an</span>
-          <span class="roi-value" id="res_benefice">-</span>
+          <span class="roi-label">CA additionnel sur 3 ans</span>
+          <span class="roi-value" id="res_ca_3ans">-</span>
+          <span class="roi-sublabel">CA potentiel cumulé</span>
         </div>
         <div class="roi-card">
-          <span class="roi-label">Couverture du coût initial par CA net (indicatif, hors marge)</span>
+          <span class="roi-label">Coût journalier de l'écran</span>
+          <span class="roi-value" id="res_cout_jour">-</span>
+          <span class="roi-sublabel">sur 36 mois, tout compris</span>
+        </div>
+        <div class="roi-card">
+          <span class="roi-label">Couverture de l'investissement *</span>
           <span class="roi-value" id="res_amortissement">-</span>
+          <span class="roi-sublabel">sur CA additionnel net</span>
         </div>
       </div>
       <div class="roi-disclaimer">
-    <p>* Le CA additionnel net des coûts n'est pas un profit ou un cash-flow : la marge n'est pas prise en compte. La "couverture du coût initial" indique en combien de mois le CA incrémental net des coûts récurrents couvrirait l'investissement — c'est un indicateur de dimensionnement, pas un calcul de rentabilité. Simulation indicative, sans engagement.</p>
-  </div>
-    </div>
-
-    <div class="chart-section" style="background: #FFF; padding: 24px; border-radius: 8px; border: 1px solid #E0E0E0; margin-bottom: 24px;">
-      <h4 style="text-align: center; margin-bottom: 20px; color: #333; font-size: 16px;">Projection cumulée du CA additionnel (sur 3 ans)</h4>
-      <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
-        <canvas id="roiChart"></canvas>
+        <p>* Couverture calculée sur le CA additionnel mensuel net des coûts récurrents (licence). Coût journalier = (investissement + coûts x 36 mois) / 1 096 jours. Indicateurs fournis à titre illustratif — marge brute non prise en compte.</p>
       </div>
     </div>
 
+    <!-- GRAPHIQUE — Couverture investissement -->
+    <div class="chart-section">
+      <h4 id="chart-title">Couverture de l'investissement — CA net cumulé sur 36 mois</h4>
+      <div class="chart-legend-custom">
+        <span class="legend-item legend-rouge">CA net cumulé</span>
+        <span class="legend-item legend-noir">Investissement initial</span>
+        <span class="legend-item legend-vert">Point de couverture</span>
+      </div>
+      <div class="chart-container">
+        <canvas id="roiChart"></canvas>
+      </div>
+      <p class="chart-caption">Le CA additionnel net des coûts mensuels s'accumule chaque mois. La ligne pointillée représente l'investissement initial — leur intersection marque le moment où l'écran est couvert.</p>
+    </div>
+
+    <!-- Coût de l'inaction -->
     <div class="inaction-section">
       <div class="inaction-text">
         <h4>Le coût de l'attente</h4>
-        <p>Si vous attendez <strong>6 mois</strong> avant de vous équiper, vous passez à côté de <span id="cout_inaction" class="inaction-amount">-</span> de chiffre d'affaires potentiel.</p>
+        <p>Si vous attendez <strong>6 mois</strong> avant de vous équiper, vous passez à côté de <span id="cout_inaction" class="inaction-amount">-</span> de CA additionnel potentiel.</p>
       </div>
     </div>
 
-    <div id="pdf-footer" style="display: none; text-align: center; margin-top: 30px; border-top: 2px solid #DE0B19; padding-top: 20px;">
-        <p style="font-size: 14px; color: #333; margin-bottom: 5px;"><strong>AKAIRO - Solutions d'affichage dynamique</strong></p>
-        <p style="font-size: 12px; color: #666; margin: 0;">
-            Retrouvez nos solutions sur <span style="color: #DE0B19;">www.akairo.fr</span><br>
-            Ceci est une simulation indicative basée sur des moyennes observées.
-        </p>
+    <!-- Footer PDF -->
+    <div id="pdf-footer" style="display: none;">
+      <p class="pdf-footer-title"><strong>AKAIRO - Solutions d'affichage dynamique</strong></p>
+      <p class="pdf-footer-sub">
+        Retrouvez nos solutions sur <span class="pdf-footer-url">www.akairo.fr</span><br>
+        Ceci est une simulation indicative basée sur des moyennes observées.
+      </p>
     </div>
 
+    <!-- Sources -->
     <div class="sources-footer">
       <p>Sources : Estimations basées sur les moyennes constatées par nos clients et études du secteur Digital Signage (2024).</p>
-      <p>Les résultats sont des simulations à titre indicatif et ne constituent pas un engagement contractuel.</p>
+      <p>Simulation indicative : les résultats dépendent de l'emplacement, de la visibilité vitrine et du contenu diffusé. Ne constitue pas un engagement contractuel.</p>
     </div>
 
-  </div>
-  
+  </div><!-- /results -->
+
+  <!-- Hidden inputs HubSpot -->
   <input type="hidden" name="trafic_visiteurs_mensuel">
   <input type="hidden" name="gain_mensuel_estime">
   <input type="hidden" name="roi_previsionnel_12_mois">
   <input type="hidden" name="budget_investissement_estime">
-</div>
+
+</div><!-- /akairo-calculator-wrapper -->
