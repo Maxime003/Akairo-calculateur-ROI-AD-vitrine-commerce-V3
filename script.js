@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleFinancement() {
   const isLocation = document.getElementById('mode_location').checked;
   const groupLoyer  = document.getElementById('group_loyer');
-  const blocTreso   = document.getElementById('bloc_tresorerie');
 
   const labelInvest  = document.getElementById('label_invest');
   const helperInvest = document.getElementById('helper_invest');
@@ -51,7 +50,6 @@ function toggleFinancement() {
 
   if (isLocation) {
     if (groupLoyer) groupLoyer.style.display = 'block';
-    if (blocTreso)  blocTreso.style.display  = 'block';
 
     labelInvest.textContent  = "Apport Initial (Facultatif)";
     helperInvest.textContent = "Préservation de la trésorerie (généralement 0€)";
@@ -62,7 +60,6 @@ function toggleFinancement() {
 
   } else {
     if (groupLoyer) groupLoyer.style.display = 'none';
-    if (blocTreso)  blocTreso.style.display  = 'none';
 
     labelInvest.textContent  = "Investissement initial (€)";
     helperInvest.textContent = "Matériel + Installation + Logiciel";
@@ -253,6 +250,8 @@ function calculerROI() {
     resultsSection.style.display = 'block';
     const dateSpan = document.getElementById('date-simulation');
     if (dateSpan) dateSpan.textContent = new Date().toLocaleDateString('fr-FR');
+    const condDate = document.getElementById('conditions-date');
+    if (condDate) condDate.textContent = 'Simulation générée le ' + new Date().toLocaleDateString('fr-FR');
     setTimeout(() => resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
   }
 

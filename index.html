@@ -138,7 +138,7 @@
     </div>
 
     <!-- Bloc CA net de coûts (visible en mode location) -->
-    <div class="treso-section" id="bloc_tresorerie" style="display: none;">
+    <div class="treso-section" id="bloc_tresorerie">
       <div class="treso-label">CA additionnel net des coûts mensuels</div>
       <div class="treso-value" id="tresorerie_nette">-</div>
       <div class="treso-sub">CA incrémental généré une fois l'écran et les services déduits.</div>
@@ -181,6 +181,8 @@
       </div>
     </div>
 
+    <div class="pdf-page-break"></div>
+
     <!-- GRAPHIQUE — Couverture investissement -->
     <div class="chart-section">
       <h4 id="chart-title">Couverture de l'investissement — CA net cumulé sur 36 mois</h4>
@@ -203,6 +205,25 @@
       </div>
     </div>
 
+    <!-- Bloc conditions — visible uniquement en mode PDF (page 2) -->
+    <div class="conditions-pdf-bloc">
+      <div class="conditions-pdf-inner">
+        <p class="conditions-pdf-title">Conditions d'utilisation — Simulation indicative</p>
+        <p class="conditions-pdf-text">
+          Cette simulation est fournie à titre strictement indicatif.
+          Elle repose sur des hypothèses économiques moyennes et des données déclaratives.
+          Elle ne constitue ni un conseil financier, ni une garantie de performance, ni un engagement contractuel.
+        </p>
+        <p class="conditions-pdf-link">
+          Conditions complètes :
+          <a href="https://v3-akairo-calculateur-roi-ad-vitrin.vercel.app/conditions.html" target="_blank">
+            https://v3-akairo-calculateur-roi-ad-vitrin.vercel.app/conditions.html
+          </a>
+        </p>
+        <p class="conditions-pdf-date" id="conditions-date"></p>
+      </div>
+    </div>
+
     <!-- Footer PDF -->
     <div id="pdf-footer" style="display: none;">
       <p class="pdf-footer-title"><strong>AKAIRO - Solutions d'affichage dynamique</strong></p>
@@ -216,6 +237,7 @@
     <div class="sources-footer">
       <p>Sources : Estimations basées sur les moyennes constatées par nos clients et études du secteur Digital Signage (2024).</p>
       <p>Simulation indicative : les résultats dépendent de l'emplacement, de la visibilité vitrine et du contenu diffusé. Ne constitue pas un engagement contractuel.</p>
+      <p><a href="conditions.html" target="_blank" class="conditions-link">Conditions d'utilisation</a></p>
     </div>
 
   </div><!-- /results -->

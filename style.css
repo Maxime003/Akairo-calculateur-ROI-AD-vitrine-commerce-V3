@@ -197,6 +197,27 @@
 /* === FOOTER SOURCES === */
 .sources-footer { text-align: center; margin-top: 32px; padding-top: 16px; border-top: 1px solid #F0F0F0; }
 .sources-footer p { font-size: 11px; color: #999; margin: 4px 0; line-height: 1.4; }
+.sources-footer .conditions-link { color: #999; font-size: 11px; text-decoration: none; }
+.sources-footer .conditions-link:hover { text-decoration: underline; color: #666; }
+
+/* === BLOC CONDITIONS PDF (page 2) === */
+.conditions-pdf-bloc { display: none; }
+.pdf-mode .conditions-pdf-bloc {
+  display: block !important;
+  margin-top: 24px;
+  padding: 16px 20px;
+  border-top: 2px solid #DE0B19;
+  background: #FAFAFA;
+  border-radius: 6px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.conditions-pdf-inner { text-align: center; }
+.conditions-pdf-title { font-size: 9px; font-weight: 700; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 6px; }
+.conditions-pdf-text { font-size: 8px; color: #888; line-height: 1.5; margin: 0 0 6px; }
+.conditions-pdf-link { font-size: 8px; color: #888; margin: 0 0 4px; }
+.conditions-pdf-link a { color: #DE0B19; text-decoration: none; }
+.conditions-pdf-date { font-size: 7px; color: #BBB; font-style: italic; margin: 0; }
 
 /* === HOVER CARTES BUDGÉTAIRES === */
 .roi-card:not(.highlight-card):hover { border-color: #DE0B19; top: -5px; box-shadow: 0 10px 20px rgba(222, 11, 25, 0.15); }
@@ -279,14 +300,22 @@
 .pdf-mode .roi-disclaimer { padding: 8px 12px !important; margin-top: 10px !important; page-break-inside: avoid !important; }
 .pdf-mode .roi-disclaimer p { font-size: 9px !important; line-height: 1.4 !important; }
 
-/* Graphique → page 2 */
-.pdf-mode .chart-section {
+/* Saut de page explicite avant le graphique */
+.pdf-page-break { display: none; }
+.pdf-mode .pdf-page-break {
   display: block !important;
   page-break-before: always !important;
   break-before: page !important;
-  margin-top: 30px !important;
-  border: none !important;
-  padding: 10px 0 !important;
+  height: 60px!important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Graphique → page 2 */
+.pdf-mode .chart-section {
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+  margin-top: 0 !important;
 }
 .pdf-mode .chart-section h4 { font-size: 13px !important; margin-bottom: 8px !important; }
 .pdf-mode .chart-legend-custom { gap: 12px !important; margin-bottom: 10px !important; }

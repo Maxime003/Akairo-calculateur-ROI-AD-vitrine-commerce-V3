@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditions d'utilisation – AKAIRO Simulateur de rentabilité</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #F8F9FA;
+      color: #1A1A1A;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* === HEADER === */
+    .cgu-header {
+      background: #FFFFFF;
+      border-bottom: 3px solid #DE0B19;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .cgu-logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #DE0B19;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: #1A1A1A;
+      color: #FFFFFF;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-back:hover { background: #333333; }
+
+    /* === CONTENU === */
+    .cgu-container {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 24px;
+      flex: 1;
+    }
+
+    .cgu-page-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 6px;
+    }
+
+    .cgu-intro {
+      font-size: 13px;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 36px;
+      border-left: 3px solid #DE0B19;
+      padding-left: 12px;
+    }
+
+    /* === ARTICLES === */
+    .cgu-article {
+      background: #FFFFFF;
+      border-radius: 8px;
+      border: 1px solid #E8E8E8;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+
+    .cgu-article-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #DE0B19;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F0F0F0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cgu-article-body {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.75;
+    }
+
+    /* === FOOTER === */
+    .cgu-footer {
+      background: #1A1A1A;
+      color: #999;
+      text-align: center;
+      padding: 20px 24px;
+      font-size: 13px;
+      margin-top: auto;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+      .cgu-header { padding: 16px 20px; }
+      .cgu-logo { font-size: 22px; }
+      .btn-back { font-size: 13px; padding: 8px 14px; }
+      .cgu-container { margin: 24px auto; padding: 0 16px; }
+      .cgu-page-title { font-size: 20px; }
+      .cgu-article { padding: 18px 16px; }
+      .cgu-article-title { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="cgu-header">
+    <span class="cgu-logo">AKAIRO</span>
+    <a href="index.html" class="btn-back">← Retour au simulateur</a>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="cgu-container">
+
+    <h1 class="cgu-page-title">Conditions d'utilisation</h1>
+    <p class="cgu-intro">Simulateur de Rentabilité AKAIRO — à lire avant d'utiliser l'outil</p>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 1 – Champ d'application</div>
+      <div class="cgu-article-body">
+        Le présent simulateur est exclusivement destiné à des professionnels agissant dans le cadre de leur activité commerciale, industrielle, artisanale ou libérale. Toute utilisation par un consommateur ou à des fins non professionnelles est exclue. L'utilisateur déclare agir en qualité de professionnel averti, disposant des compétences et des moyens nécessaires pour apprécier la pertinence économique des estimations générées.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 2 – Objet</div>
+      <div class="cgu-article-body">
+        Le simulateur a pour objet de fournir, à titre strictement indicatif, une modélisation économique prévisionnelle susceptible de résulter de l'acquisition ou de l'installation d'un écran d'affichage dynamique. Il permet notamment d'afficher une estimation de chiffre d'affaires additionnel, une estimation de trésorerie nette mensuelle, un retour sur investissement théorique, une durée d'amortissement estimative ainsi qu'une projection cumulative sur plusieurs années, incluant le cas échéant une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet.
+        <br><br>
+        Les estimations sont établies à partir des données déclaratives renseignées par l'utilisateur, combinées à des moyennes constatées auprès de clients professionnels et à des analyses sectorielles relatives au marché du Digital Signage en 2024. Elles reposent sur des hypothèses économiques générales standardisées.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 3 – Nature des estimations</div>
+      <div class="cgu-article-body">
+        Le simulateur constitue un outil automatisé de modélisation économique standardisé. Il ne constitue ni un audit personnalisé, ni un conseil financier, juridique, fiscal ou stratégique individualisé, ni une étude de marché spécifique à l'entreprise de l'utilisateur.
+        <br><br>
+        Les indicateurs financiers affichés, notamment le chiffre d'affaires estimé, la trésorerie nette mensuelle, le retour sur investissement, la durée d'amortissement et toute estimation relative à un gain potentiel différé, sont calculés sur la base d'hypothèses théoriques moyennes et de données déclaratives. Ils ne tiennent pas compte de l'ensemble des variables propres à chaque entreprise, telles que sa localisation, son environnement concurrentiel, sa stratégie commerciale, la saisonnalité de son activité, la conjoncture économique, les charges réelles d'exploitation ou les modalités concrètes de mise en œuvre du dispositif.
+        <br><br>
+        En conséquence, ces indicateurs présentent un caractère purement prévisionnel et illustratif. Ils ne constituent en aucun cas une garantie de performance, une promesse de rentabilité, un engagement de chiffre d'affaires minimum, une garantie d'amortissement dans un délai déterminé ni une obligation de résultat à la charge de la société. La société est tenue d'une obligation de moyens limitée au bon fonctionnement technique du simulateur.
+        <br><br>
+        Toute décision d'investissement, d'acquisition ou de financement relève de la seule responsabilité de l'utilisateur professionnel.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 4 – Spécificité relative à l'estimation du « coût de l'attente »</div>
+      <div class="cgu-article-body">
+        Lorsque le simulateur présente une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet, cette estimation correspond exclusivement à une extrapolation théorique du chiffre d'affaires additionnel potentiel calculé selon les hypothèses retenues par la simulation.
+        <br><br>
+        Cette estimation ne constitue pas l'évaluation d'une perte certaine, d'un manque à gagner garanti ni d'un préjudice économique avéré. Elle repose sur la continuité des hypothèses économiques retenues et demeure susceptible de variations significatives selon les conditions réelles d'exploitation.
+        <br><br>
+        L'utilisateur reconnaît expressément que cette estimation a une finalité illustrative et pédagogique et qu'elle ne saurait être interprétée comme la démonstration d'une perte automatique ou inévitable en cas de différé d'investissement.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 5 – Responsabilité relative aux données saisies</div>
+      <div class="cgu-article-body">
+        L'utilisateur professionnel déclare et garantit l'exactitude, la sincérité, la complétude et l'actualité des données économiques qu'il renseigne dans le simulateur. Il reconnaît que toute inexactitude ou approximation est susceptible d'altérer significativement les résultats générés.
+        <br><br>
+        L'utilisateur reconnaît également que toute variation des paramètres réels d'exploitation, notamment en termes de fréquentation, de comportement d'achat, de concurrence, de politique tarifaire ou de coûts d'exploitation, peut affecter les performances effectivement constatées.
+        <br><br>
+        La société ne pourra être tenue responsable d'un résultat erroné ou inadapté résultant de données inexactes, incomplètes ou imprécises, ni d'un écart entre les projections affichées et les résultats réellement obtenus.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 6 – Limitation de responsabilité</div>
+      <div class="cgu-article-body">
+        Le simulateur reposant sur des hypothèses économiques générales et des moyennes statistiques, la société ne saurait être tenue responsable des conséquences financières résultant des décisions prises sur la base des estimations générées.
+        <br><br>
+        La responsabilité de la société ne pourra être engagée au titre d'un manque à gagner, d'une perte d'exploitation, d'une perte de chance, d'un retard ou d'une absence d'amortissement, ni au titre de tout préjudice indirect ou immatériel.
+        <br><br>
+        En tout état de cause, la responsabilité totale de la société au titre de l'utilisation du simulateur, toutes causes confondues, ne pourra excéder un montant symbolique correspondant à l'utilisation gratuite de l'outil.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 7 – Absence d'engagement contractuel et consentement</div>
+      <div class="cgu-article-body">
+        L'utilisateur professionnel reconnaît expressément que le simulateur constitue un outil standardisé et qu'il ne saurait se substituer à une analyse personnalisée de sa situation économique. Il déclare ne pas fonder sa décision d'investissement exclusivement sur les estimations générées et reconnaît que celles-ci ne présentent pas un caractère déterminant de son consentement. Il conserve la responsabilité exclusive de son appréciation économique et stratégique.
+        <br><br>
+        Les résultats générés par le simulateur ne constituent ni une offre ferme, ni un engagement unilatéral, ni un élément contractuel opposable. Seuls les engagements expressément stipulés dans un contrat distinct signé entre les parties pourront engager la société.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 8 – Traitement des données</div>
+      <div class="cgu-article-body">
+        Les informations saisies par l'utilisateur sont utilisées exclusivement pour permettre la génération instantanée du calcul de simulation. Aucune donnée n'est enregistrée dans une base de données, conservée après l'affichage des résultats, exploitée à des fins commerciales, statistiques ou marketing, ni transmise à des tiers. Les informations sont supprimées automatiquement après exécution du calcul. Le simulateur fonctionne sans constitution de fichier client.
+      </div>
+    </div>
+
+    <div class="cgu-article">
+      <div class="cgu-article-title">Article 9 – Acceptation</div>
+      <div class="cgu-article-body">
+        L'activation du bouton « Lancer la simulation » après validation de la case dédiée vaut acceptation pleine et entière des présentes conditions ainsi que reconnaissance expresse du caractère hypothétique, indicatif et non garanti des indicateurs générés, y compris de toute estimation relative au retour sur investissement, à la durée d'amortissement et au gain potentiel différé.
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cgu-footer">
+    © AKAIRO – Simulateur de rentabilité
+  </footer>
+
+</body>
+</html>
