@@ -3,239 +3,820 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conditions d'utilisation – AKAIRO Simulateur de rentabilité</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Conditions d'utilisation & Sources — Simulateur AKAIRO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --red: #DE0B19;
+      --red-dark: #910F14;
+      --black: #0A0B0B;
+      --dark: #1C1F1F;
+      --gray: #666;
+      --light-gray: #F8F9FA;
+      --border: #E8E8E8;
+    }
+
     body {
       font-family: 'Outfit', sans-serif;
-      background: #F8F9FA;
-      color: #1A1A1A;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background: #FAFAFA;
+      color: var(--dark);
+      line-height: 1.7;
     }
 
-    /* === HEADER === */
-    .cgu-header {
-      background: #FFFFFF;
-      border-bottom: 3px solid #DE0B19;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+    /* ── HEADER ── */
+    .page-header {
+      background: var(--black);
+      padding: 40px 0 0;
+      position: relative;
+      overflow: hidden;
     }
 
-    .cgu-logo {
-      font-size: 28px;
+    .page-header::before {
+      content: 'AKAIRO';
+      position: absolute;
+      right: -20px;
+      top: -10px;
+      font-size: 140px;
       font-weight: 700;
-      color: #DE0B19;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
+      color: rgba(255,255,255,0.03);
+      letter-spacing: -4px;
+      pointer-events: none;
+      user-select: none;
     }
 
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 20px;
-      background: #1A1A1A;
-      color: #FFFFFF;
-      font-family: 'Outfit', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease;
-      white-space: nowrap;
-    }
-    .btn-back:hover { background: #333333; }
-
-    /* === CONTENU === */
-    .cgu-container {
+    .header-inner {
       max-width: 860px;
-      margin: 40px auto;
-      padding: 0 24px;
-      flex: 1;
+      margin: 0 auto;
+      padding: 0 40px 40px;
     }
 
-    .cgu-page-title {
-      font-size: 26px;
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--red);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-mark svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .logo-text {
+      font-size: 20px;
       font-weight: 700;
-      color: #1A1A1A;
-      margin-bottom: 6px;
+      color: white;
+      letter-spacing: 2px;
     }
 
-    .cgu-intro {
-      font-size: 13px;
-      color: #888;
-      font-style: italic;
-      margin-bottom: 36px;
-      border-left: 3px solid #DE0B19;
-      padding-left: 12px;
-    }
-
-    /* === ARTICLES === */
-    .cgu-article {
-      background: #FFFFFF;
-      border-radius: 8px;
-      border: 1px solid #E8E8E8;
-      padding: 24px 28px;
+    .header-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--red);
+      border: 1px solid rgba(222,11,25,0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
       margin-bottom: 16px;
     }
 
-    .cgu-article-title {
-      font-size: 16px;
+    .header-title {
+      font-size: 36px;
       font-weight: 700;
-      color: #DE0B19;
+      color: white;
+      line-height: 1.15;
       margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #F0F0F0;
+    }
+
+    .header-title span { color: var(--red); }
+
+    .header-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      max-width: 520px;
+    }
+
+    /* ── NAV TABS ── */
+    .nav-tabs {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-tabs-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-tab {
+      padding: 16px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-tab:hover { color: rgba(255,255,255,0.8); }
+    .nav-tab.active { color: white; border-bottom-color: var(--red); }
+
+    /* ── MAIN CONTENT ── */
+    .page-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── SECTION INTRO ── */
+    .section-intro {
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+
+    .section-intro p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .section-intro strong { color: var(--dark); }
+
+    /* ── LEGAL ARTICLES ── */
+    .article {
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .article-number {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .article p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .article p:last-child { margin-bottom: 0; }
+
+    /* ── SOURCES SECTION ── */
+    .sources-intro {
+      margin-bottom: 48px;
+    }
+
+    .sources-intro h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .sources-intro p {
+      font-size: 15px;
+      color: var(--gray);
+      max-width: 600px;
+    }
+
+    /* Modèle V3.1 */
+    .model-block {
+      background: var(--black);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 48px;
+      color: white;
+    }
+
+    .model-block h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .model-subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+    }
+
+    .model-formula {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .formula-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--red);
+      margin-bottom: 10px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .formula-line {
+      font-size: 15px;
+      color: white;
+      line-height: 2;
+    }
+
+    .formula-comment {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .model-params {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .param-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .param-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 4px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .param-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+
+    /* Tableau des indicateurs */
+    .indicators-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .indicators-sub {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .indicators-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 48px;
+      font-size: 13px;
+    }
+
+    .indicators-table thead th {
+      background: var(--black);
+      color: white;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    .cgu-article-body {
-      font-size: 14px;
+    .indicators-table thead th:first-child { border-radius: 6px 0 0 0; }
+    .indicators-table thead th:last-child { border-radius: 0 6px 0 0; }
+
+    .indicators-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .indicators-table tbody tr:hover { background: #F5F5F5; }
+    .indicators-table tbody tr:last-child { border-bottom: none; }
+
+    .indicators-table td {
+      padding: 14px 16px;
       color: #444;
-      line-height: 1.75;
+      vertical-align: top;
     }
 
-    /* === FOOTER === */
-    .cgu-footer {
-      background: #1A1A1A;
-      color: #999;
-      text-align: center;
-      padding: 20px 24px;
+    .indicators-table td:first-child { font-weight: 500; color: var(--dark); }
+
+    .badge-value {
+      display: inline-block;
+      background: rgba(222,11,25,0.08);
+      color: var(--red);
+      font-weight: 700;
       font-size: 13px;
-      margin-top: auto;
+      padding: 2px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
     }
 
-    /* === RESPONSIVE === */
-    @media (max-width: 600px) {
-      .cgu-header { padding: 16px 20px; }
-      .cgu-logo { font-size: 22px; }
-      .btn-back { font-size: 13px; padding: 8px 14px; }
-      .cgu-container { margin: 24px auto; padding: 0 16px; }
-      .cgu-page-title { font-size: 20px; }
-      .cgu-article { padding: 18px 16px; }
-      .cgu-article-title { font-size: 14px; }
+    .source-link {
+      color: var(--red);
+      text-decoration: none;
+      font-size: 12px;
+      word-break: break-all;
+    }
+
+    .source-link:hover { text-decoration: underline; }
+
+    /* Cartes sources */
+    .sources-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .sources-sub {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .source-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .source-card:hover { border-color: var(--red); }
+
+    .source-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .source-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .source-card-meta {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .source-card a {
+      font-size: 12px;
+      color: var(--red);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .source-card a:hover { text-decoration: underline; }
+
+    /* ── BACK LINK ── */
+    .back-bar {
+      background: white;
+      border-top: 1px solid var(--border);
+      padding: 20px 40px;
+    }
+
+    .back-bar-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-link {
+      font-size: 14px;
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.2s;
+    }
+
+    .back-link:hover { gap: 12px; }
+
+    .back-meta {
+      font-size: 12px;
+      color: #BBB;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .header-inner, .page-content { padding: 32px 20px; }
+      .nav-tabs-inner { padding: 0 20px; }
+      .header-title { font-size: 26px; }
+      .model-params { grid-template-columns: 1fr 1fr; }
+      .sources-grid { grid-template-columns: 1fr; }
+      .indicators-table { font-size: 12px; }
+      .indicators-table td, .indicators-table th { padding: 10px 12px; }
+      .back-bar { padding: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="cgu-header">
-    <span class="cgu-logo">AKAIRO</span>
-    <a href="index.html" class="btn-back">← Retour au simulateur</a>
-  </header>
+<!-- HEADER -->
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2zm0 4l7 13H5l7-13z"/></svg>
+      </div>
+      <span class="logo-text">AKAIRO</span>
+    </div>
+    <div class="header-tag">Simulateur d'impact CA</div>
+    <h1 class="header-title">Conditions d'utilisation<br><span>&</span> Sources</h1>
+    <p class="header-sub">Tout ce que vous devez savoir sur le fonctionnement du simulateur, les données utilisées et leur origine.</p>
+  </div>
+  <nav class="nav-tabs">
+    <div class="nav-tabs-inner">
+      <a class="nav-tab active" onclick="switchTab('conditions', this)">Conditions d'utilisation</a>
+      <a class="nav-tab" onclick="switchTab('sources', this)">Sources & Méthodologie</a>
+    </div>
+  </nav>
+</header>
 
-  <!-- CONTENU -->
-  <main class="cgu-container">
+<!-- MAIN -->
+<main class="page-content">
 
-    <h1 class="cgu-page-title">Conditions d'utilisation</h1>
-    <p class="cgu-intro">Simulateur de Rentabilité AKAIRO — à lire avant d'utiliser l'outil</p>
+  <!-- ═══════════════════════════════════════ -->
+  <!-- ONGLET 1 — CONDITIONS D'UTILISATION   -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="section active" id="section-conditions">
 
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 1 – Champ d'application</div>
-      <div class="cgu-article-body">
-        Le présent simulateur est exclusivement destiné à des professionnels agissant dans le cadre de leur activité commerciale, industrielle, artisanale ou libérale. Toute utilisation par un consommateur ou à des fins non professionnelles est exclue. L'utilisateur déclare agir en qualité de professionnel averti, disposant des compétences et des moyens nécessaires pour apprécier la pertinence économique des estimations générées.
+    <div class="section-intro">
+      <p>En utilisant ce simulateur, vous acceptez les présentes conditions. <strong>Ce document précise la nature indicative des estimations générées</strong> et les limites de responsabilité applicables. Nous vous invitons à le lire attentivement avant toute utilisation.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 1</span>
+      <h3>Champ d'application</h3>
+      <p>Le présent simulateur est exclusivement destiné à des professionnels agissant dans le cadre de leur activité commerciale, industrielle, artisanale ou libérale. Toute utilisation par un consommateur ou à des fins non professionnelles est exclue.</p>
+      <p>L'utilisateur déclare agir en qualité de professionnel averti, disposant des compétences et des moyens nécessaires pour apprécier la pertinence économique des estimations générées.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 2</span>
+      <h3>Objet</h3>
+      <p>Le simulateur a pour objet de fournir, à titre strictement indicatif, une modélisation économique prévisionnelle susceptible de résulter de l'acquisition ou de l'installation d'un écran d'affichage dynamique.</p>
+      <p>Il permet notamment d'afficher une estimation de chiffre d'affaires additionnel, une estimation de trésorerie nette mensuelle, un retour sur investissement théorique, une durée d'amortissement estimative ainsi qu'une projection cumulative sur plusieurs années, incluant le cas échéant une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet.</p>
+      <p>Les estimations sont établies à partir des données déclaratives renseignées par l'utilisateur, combinées à des moyennes constatées auprès de clients professionnels et à des analyses sectorielles relatives au marché du Digital Signage en 2024. Elles reposent sur des hypothèses économiques générales standardisées.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 3</span>
+      <h3>Nature des estimations</h3>
+      <p>Le simulateur constitue un outil automatisé de modélisation économique standardisé. Il ne constitue ni un audit personnalisé, ni un conseil financier, juridique, fiscal ou stratégique individualisé, ni une étude de marché spécifique à l'entreprise de l'utilisateur.</p>
+      <p>Les indicateurs financiers affichés, notamment le chiffre d'affaires estimé, la trésorerie nette mensuelle, le retour sur investissement, la durée d'amortissement et toute estimation relative à un gain potentiel différé, sont calculés sur la base d'hypothèses théoriques moyennes et de données déclaratives. Ils ne tiennent pas compte de l'ensemble des variables propres à chaque entreprise, telles que sa localisation, son environnement concurrentiel, sa stratégie commerciale, la saisonnalité de son activité, la conjoncture économique, les charges réelles d'exploitation ou les modalités concrètes de mise en œuvre du dispositif.</p>
+      <p>En conséquence, ces indicateurs présentent un caractère purement prévisionnel et illustratif. Ils ne constituent en aucun cas une garantie de performance, une promesse de rentabilité, un engagement de chiffre d'affaires minimum, une garantie d'amortissement dans un délai déterminé ni une obligation de résultat à la charge de la société.</p>
+      <p>La société est tenue d'une obligation de moyens limitée au bon fonctionnement technique du simulateur. Toute décision d'investissement, d'acquisition ou de financement relève de la seule responsabilité de l'utilisateur professionnel.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 4</span>
+      <h3>Spécificité relative à l'estimation du « coût de l'attente »</h3>
+      <p>Lorsque le simulateur présente une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet, cette estimation correspond exclusivement à une extrapolation théorique du chiffre d'affaires additionnel potentiel calculé selon les hypothèses retenues par la simulation.</p>
+      <p>Cette estimation ne constitue pas l'évaluation d'une perte certaine, d'un manque à gagner garanti ni d'un préjudice économique avéré. Elle repose sur la continuité des hypothèses économiques retenues et demeure susceptible de variations significatives selon les conditions réelles d'exploitation.</p>
+      <p>L'utilisateur reconnaît expressément que cette estimation a une finalité illustrative et pédagogique et qu'elle ne saurait être interprétée comme la démonstration d'une perte automatique ou inévitable en cas de différé d'investissement.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 5</span>
+      <h3>Responsabilité relative aux données saisies</h3>
+      <p>L'utilisateur professionnel déclare et garantit l'exactitude, la sincérité, la complétude et l'actualité des données économiques qu'il renseigne dans le simulateur. Il reconnaît que toute inexactitude ou approximation est susceptible d'altérer significativement les résultats générés.</p>
+      <p>L'utilisateur reconnaît également que toute variation des paramètres réels d'exploitation, notamment en termes de fréquentation, de comportement d'achat, de concurrence, de politique tarifaire ou de coûts d'exploitation, peut affecter les performances effectivement constatées.</p>
+      <p>La société ne pourra être tenue responsable d'un résultat erroné ou inadapté résultant de données inexactes, incomplètes ou imprécises, ni d'un écart entre les projections affichées et les résultats réellement obtenus.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 6</span>
+      <h3>Limitation de responsabilité</h3>
+      <p>Le simulateur reposant sur des hypothèses économiques générales et des moyennes statistiques, la société ne saurait être tenue responsable des conséquences financières résultant des décisions prises sur la base des estimations générées.</p>
+      <p>La responsabilité de la société ne pourra être engagée au titre d'un manque à gagner, d'une perte d'exploitation, d'une perte de chance, d'un retard ou d'une absence d'amortissement, ni au titre de tout préjudice indirect ou immatériel.</p>
+      <p>En tout état de cause, la responsabilité totale de la société au titre de l'utilisation du simulateur, toutes causes confondues, ne pourra excéder un montant symbolique correspondant à l'utilisation gratuite de l'outil.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 7</span>
+      <h3>Absence d'engagement contractuel et consentement</h3>
+      <p>L'utilisateur professionnel reconnaît expressément que le simulateur constitue un outil standardisé et qu'il ne saurait se substituer à une analyse personnalisée de sa situation économique. Il déclare ne pas fonder sa décision d'investissement exclusivement sur les estimations générées et reconnaît que celles-ci ne présentent pas un caractère déterminant de son consentement. Il conserve la responsabilité exclusive de son appréciation économique et stratégique.</p>
+      <p>Les résultats générés par le simulateur ne constituent ni une offre ferme, ni un engagement unilatéral, ni un élément contractuel opposable. Seuls les engagements expressément stipulés dans un contrat distinct signé entre les parties pourront engager la société.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 8</span>
+      <h3>Traitement des données</h3>
+      <p>Les informations saisies par l'utilisateur sont utilisées exclusivement pour permettre la génération instantanée du calcul de simulation. Aucune donnée n'est enregistrée dans une base de données, conservée après l'affichage des résultats, exploitée à des fins commerciales, statistiques ou marketing, ni transmise à des tiers.</p>
+      <p>Les informations sont supprimées automatiquement après exécution du calcul. Le simulateur fonctionne sans constitution de fichier client.</p>
+    </div>
+
+    <div class="article">
+      <span class="article-number">Article 9</span>
+      <h3>Acceptation</h3>
+      <p>L'activation du bouton « Simuler mon chiffre d'affaires » après validation de la case dédiée vaut acceptation pleine et entière des présentes conditions ainsi que reconnaissance expresse du caractère hypothétique, indicatif et non garanti des indicateurs générés, y compris de toute estimation relative au retour sur investissement, à la durée d'amortissement et au gain potentiel différé.</p>
+    </div>
+
+  </div><!-- /section-conditions -->
+
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- ONGLET 2 — SOURCES & MÉTHODOLOGIE       -->
+  <!-- ════════════════════════════════════════ -->
+  <div class="section" id="section-sources">
+
+    <div class="sources-intro">
+      <h2>Modèle de calcul & Sources</h2>
+      <p>Comprendre d'où viennent les chiffres, quelles études ont servi de base, et comment le moteur de calcul transforme vos données en projection de CA.</p>
+    </div>
+
+    <!-- Modèle V3.1 -->
+    <div class="model-block">
+      <h3>Le modèle V3.1 — Principe de calcul</h3>
+      <p class="model-subtitle">Comment vos données sont transformées en CA additionnel estimé</p>
+
+      <div class="model-formula">
+        <div class="formula-label">Formule centrale</div>
+        <div class="formula-line">ΔV = V × u<sub>T</sub> × k</div>
+        <div class="formula-comment">// Ventes supplémentaires par mois</div>
+        <br>
+        <div class="formula-line">ΔCA = ΔV × P</div>
+        <div class="formula-comment">// CA additionnel mensuel — panier constant</div>
+      </div>
+
+      <div class="model-params">
+        <div class="param-card">
+          <div class="param-name">V</div>
+          <div class="param-desc">Ventes mensuelles actuelles (transactions)</div>
+        </div>
+        <div class="param-card">
+          <div class="param-name">u<sub>T</sub></div>
+          <div class="param-desc">Hausse de trafic estimée — 10% par défaut</div>
+        </div>
+        <div class="param-card">
+          <div class="param-name">k = 0,435</div>
+          <div class="param-desc">Constante de conversion relative — taux d'achat des visiteurs incrémentaux</div>
+        </div>
+        <div class="param-card">
+          <div class="param-name">P</div>
+          <div class="param-desc">Panier moyen — constant (non modifié par l'écran)</div>
+        </div>
+        <div class="param-card">
+          <div class="param-name">ΔV</div>
+          <div class="param-desc">Ventes supplémentaires mensuelles estimées</div>
+        </div>
+        <div class="param-card">
+          <div class="param-name">ΔCA</div>
+          <div class="param-desc">CA additionnel mensuel potentiel (HT)</div>
+        </div>
       </div>
     </div>
 
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 2 – Objet</div>
-      <div class="cgu-article-body">
-        Le simulateur a pour objet de fournir, à titre strictement indicatif, une modélisation économique prévisionnelle susceptible de résulter de l'acquisition ou de l'installation d'un écran d'affichage dynamique. Il permet notamment d'afficher une estimation de chiffre d'affaires additionnel, une estimation de trésorerie nette mensuelle, un retour sur investissement théorique, une durée d'amortissement estimative ainsi qu'une projection cumulative sur plusieurs années, incluant le cas échéant une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet.
-        <br><br>
-        Les estimations sont établies à partir des données déclaratives renseignées par l'utilisateur, combinées à des moyennes constatées auprès de clients professionnels et à des analyses sectorielles relatives au marché du Digital Signage en 2024. Elles reposent sur des hypothèses économiques générales standardisées.
+    <!-- Pourquoi k = 0,435 -->
+    <p class="indicators-title">Origine du coefficient k = 0,435</p>
+    <p class="indicators-sub">Ce coefficient calibre la qualité de conversion des visiteurs supplémentaires attirés par l'écran vitrine.</p>
+
+    <table class="indicators-table" style="margin-bottom: 16px;">
+      <thead>
+        <tr>
+          <th>Indicateur observé</th>
+          <th>Valeur</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hausse de trafic constatée</td>
+          <td><span class="badge-value">+23%</span></td>
+          <td><a class="source-link" href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">Behavioral Effects of Digital Signage — ResearchGate</a></td>
+        </tr>
+        <tr>
+          <td>Hausse des transactions constatée</td>
+          <td><span class="badge-value">+10%</span></td>
+          <td><a class="source-link" href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">Behavioral Effects of Digital Signage — ResearchGate</a></td>
+        </tr>
+        <tr>
+          <td>Ratio k = % ventes / % trafic</td>
+          <td><span class="badge-value">10% ÷ 23% = 0,435</span></td>
+          <td>Calcul AKAIRO — les nouveaux entrants convertissent à 43,5% du taux habituel</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-intro" style="margin-bottom: 40px;">
+      <p><strong>Interprétation :</strong> Un visiteur attiré par l'écran vitrine n'est pas aussi qualifié qu'un client qui pousse naturellement la porte. Le coefficient k traduit cette réalité : le trafic incrémental convertit moins bien que le trafic habituel. Avec +10% de trafic et k = 0,435, on obtient environ +4,35% de transactions supplémentaires — une projection prudente et défendable.</p>
+    </div>
+
+    <!-- Tableau des indicateurs sectoriels -->
+    <p class="indicators-title">Indicateurs sectoriels utilisés</p>
+    <p class="indicators-sub">Les données ci-dessous ont servi de base à la calibration du modèle et aux ordres de grandeur affichés dans le simulateur.</p>
+
+    <table class="indicators-table">
+      <thead>
+        <tr>
+          <th>Indicateur</th>
+          <th>Valeur</th>
+          <th>Type d'effet</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hausse moyenne des ventes sur produits promus</td>
+          <td><span class="badge-value">+8,1%</span></td>
+          <td>Taux de conversion — 237 campagnes Digital Signage</td>
+          <td><a class="source-link" href="https://www.clickz.com/does-in-store-digital-signage-actually-work-four-years-of-data-say-yes/272321/" target="_blank">ClickZ — Four years of data</a></td>
+        </tr>
+        <tr>
+          <td>Hausse max. observée sur ventes promues (vs print)</td>
+          <td><span class="badge-value">jusqu'à +33%</span></td>
+          <td>Ventes produit — rayons en digital vs print</td>
+          <td><a class="source-link" href="https://moodmedia.com/gb/sight/data-behind-digital-signage/" target="_blank">Mood Media — Data behind Digital Signage</a></td>
+        </tr>
+        <tr>
+          <td>Hausse moyenne des ventes après installation</td>
+          <td><span class="badge-value">+29,5%</span></td>
+          <td>Ventes globales — zones exposées</td>
+          <td><a class="source-link" href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">Samsung Insights — 2025</a></td>
+        </tr>
+        <tr>
+          <td>Plage d'augmentation de trafic avec Digital Signage</td>
+          <td><span class="badge-value">+15% à +30%</span></td>
+          <td>Trafic entrant — agrégat multi-études</td>
+          <td><a class="source-link" href="https://opensign.us/blog/digital-signs-boost-foot-traffic" target="_blank">OpenSign — Foot traffic study</a></td>
+        </tr>
+        <tr>
+          <td>Part des achats motivés par la vitrine</td>
+          <td><span class="badge-value">23% du CA</span></td>
+          <td>Sensibilité à la vitrine — décision d'achat</td>
+          <td><a class="source-link" href="https://localscreens.pl/en/blog/the-screen-for-the-shop-window/" target="_blank">LocalScreens — Shop window</a></td>
+        </tr>
+        <tr>
+          <td>Clients déclarant que le Digital Signage influence leur achat</td>
+          <td><span class="badge-value">68–70%</span></td>
+          <td>Comportement — enquêtes Nielsen & retail</td>
+          <td><a class="source-link" href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">Samsung / Nielsen</a></td>
+        </tr>
+        <tr>
+          <td>Réduction du temps d'attente perçu</td>
+          <td><span class="badge-value">jusqu'à −35%</span></td>
+          <td>Expérience client</td>
+          <td><a class="source-link" href="https://wovenmedia.com/blog/improve-in-store-experience-and-increase-sales-with-digital-signage/" target="_blank">Milward Brown / Impax Media</a></td>
+        </tr>
+        <tr>
+          <td>ROI brut moyen pour les marques</td>
+          <td><span class="badge-value">+21%</span></td>
+          <td>ROI média — investissements écrans vs ventes incrémentales</td>
+          <td><a class="source-link" href="https://www.sixteen-nine.net/2026/01/19/retail-study-offers-empirical-evidence-that-screens-in-stores-really-do-drive-significant-sales-bumps/" target="_blank">Sixteen-Nine — Retail study 2026</a></td>
+        </tr>
+        <tr>
+          <td>Enseignes voyant un gain significatif Digital vs Print</td>
+          <td><span class="badge-value">80%</span></td>
+          <td>Adoption réussie — 120 magasins suivis</td>
+          <td><a class="source-link" href="https://moodmedia.com/gb/sight/data-behind-digital-signage/" target="_blank">Mood Media</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Cartes sources principales -->
+    <p class="sources-title">Sources principales</p>
+    <p class="sources-sub">Les études et publications académiques sur lesquelles repose le calibrage du modèle.</p>
+
+    <div class="sources-grid">
+      <div class="source-card">
+        <div class="source-card-label">Académique</div>
+        <div class="source-card-title">Behavioral Effects of Digital Signage</div>
+        <div class="source-card-meta">Étude académique parue sur ResearchGate. Mesure les effets comportementaux des écrans en commerce — trafic +23%, transactions +10%. Base de calibration du coefficient k = 0,435.</div>
+        <a href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">researchgate.net →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-label">Marché 2025</div>
+        <div class="source-card-title">How Digital Signage Drives Retail Traffic and Sales</div>
+        <div class="source-card-meta">Étude Samsung Insights publiée en décembre 2025. Confirme une hausse moyenne des ventes de +29,5% après installation d'un écran vitrine dans les zones exposées.</div>
+        <a href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">insights.samsung.com →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-label">Terrain — 4 ans</div>
+        <div class="source-card-title">Does In-Store Digital Signage Actually Work?</div>
+        <div class="source-card-meta">Analyse de 237 campagnes Digital Signage chez une grande enseigne, sur 4 ans de données caisse. Hausse moyenne de +8,1% sur les ventes de produits promus.</div>
+        <a href="https://www.clickz.com/does-in-store-digital-signage-actually-work-four-years-of-data-say-yes/272321/" target="_blank">clickz.com →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-label">Retail 2026</div>
+        <div class="source-card-title">Retail Study — Empirical Evidence on Screen Impact</div>
+        <div class="source-card-meta">Étude publiée par Sixteen-Nine en janvier 2026. Documente un ROI brut moyen de +21% pour les marques ayant investi dans des écrans en point de vente.</div>
+        <a href="https://www.sixteen-nine.net/2026/01/19/retail-study-offers-empirical-evidence-that-screens-in-stores-really-do-drive-significant-sales-bumps/" target="_blank">sixteen-nine.net →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-label">Expérience client</div>
+        <div class="source-card-title">Improve In-Store Experience with Digital Signage</div>
+        <div class="source-card-meta">Étude Milward Brown / Impax Media citée par Woven Media. Documente jusqu'à −35% de temps d'attente perçu grâce aux écrans et l'amélioration de la satisfaction client.</div>
+        <a href="https://wovenmedia.com/blog/improve-in-store-experience-and-increase-sales-with-digital-signage/" target="_blank">wovenmedia.com →</a>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-label">Vitrine & décision</div>
+        <div class="source-card-title">The Screen for the Shop Window</div>
+        <div class="source-card-meta">Analyse LocalScreens sur le rôle de la vitrine dans la décision d'achat. Jusqu'à 23% du CA d'un magasin peut être directement sensible à la qualité et l'animation de la vitrine.</div>
+        <a href="https://localscreens.pl/en/blog/the-screen-for-the-shop-window/" target="_blank">localscreens.pl →</a>
       </div>
     </div>
 
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 3 – Nature des estimations</div>
-      <div class="cgu-article-body">
-        Le simulateur constitue un outil automatisé de modélisation économique standardisé. Il ne constitue ni un audit personnalisé, ni un conseil financier, juridique, fiscal ou stratégique individualisé, ni une étude de marché spécifique à l'entreprise de l'utilisateur.
-        <br><br>
-        Les indicateurs financiers affichés, notamment le chiffre d'affaires estimé, la trésorerie nette mensuelle, le retour sur investissement, la durée d'amortissement et toute estimation relative à un gain potentiel différé, sont calculés sur la base d'hypothèses théoriques moyennes et de données déclaratives. Ils ne tiennent pas compte de l'ensemble des variables propres à chaque entreprise, telles que sa localisation, son environnement concurrentiel, sa stratégie commerciale, la saisonnalité de son activité, la conjoncture économique, les charges réelles d'exploitation ou les modalités concrètes de mise en œuvre du dispositif.
-        <br><br>
-        En conséquence, ces indicateurs présentent un caractère purement prévisionnel et illustratif. Ils ne constituent en aucun cas une garantie de performance, une promesse de rentabilité, un engagement de chiffre d'affaires minimum, une garantie d'amortissement dans un délai déterminé ni une obligation de résultat à la charge de la société. La société est tenue d'une obligation de moyens limitée au bon fonctionnement technique du simulateur.
-        <br><br>
-        Toute décision d'investissement, d'acquisition ou de financement relève de la seule responsabilité de l'utilisateur professionnel.
-      </div>
-    </div>
+  </div><!-- /section-sources -->
 
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 4 – Spécificité relative à l'estimation du « coût de l'attente »</div>
-      <div class="cgu-article-body">
-        Lorsque le simulateur présente une estimation du gain potentiel susceptible de ne pas être réalisé en cas de report du projet, cette estimation correspond exclusivement à une extrapolation théorique du chiffre d'affaires additionnel potentiel calculé selon les hypothèses retenues par la simulation.
-        <br><br>
-        Cette estimation ne constitue pas l'évaluation d'une perte certaine, d'un manque à gagner garanti ni d'un préjudice économique avéré. Elle repose sur la continuité des hypothèses économiques retenues et demeure susceptible de variations significatives selon les conditions réelles d'exploitation.
-        <br><br>
-        L'utilisateur reconnaît expressément que cette estimation a une finalité illustrative et pédagogique et qu'elle ne saurait être interprétée comme la démonstration d'une perte automatique ou inévitable en cas de différé d'investissement.
-      </div>
-    </div>
+</main>
 
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 5 – Responsabilité relative aux données saisies</div>
-      <div class="cgu-article-body">
-        L'utilisateur professionnel déclare et garantit l'exactitude, la sincérité, la complétude et l'actualité des données économiques qu'il renseigne dans le simulateur. Il reconnaît que toute inexactitude ou approximation est susceptible d'altérer significativement les résultats générés.
-        <br><br>
-        L'utilisateur reconnaît également que toute variation des paramètres réels d'exploitation, notamment en termes de fréquentation, de comportement d'achat, de concurrence, de politique tarifaire ou de coûts d'exploitation, peut affecter les performances effectivement constatées.
-        <br><br>
-        La société ne pourra être tenue responsable d'un résultat erroné ou inadapté résultant de données inexactes, incomplètes ou imprécises, ni d'un écart entre les projections affichées et les résultats réellement obtenus.
-      </div>
-    </div>
+<!-- BACK BAR -->
+<div class="back-bar">
+  <div class="back-bar-inner">
+    <a href="index.html" class="back-link">← Retour au simulateur</a>
+    <span class="back-meta">AKAIRO — Simulateur d'impact CA · 2025</span>
+  </div>
+</div>
 
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 6 – Limitation de responsabilité</div>
-      <div class="cgu-article-body">
-        Le simulateur reposant sur des hypothèses économiques générales et des moyennes statistiques, la société ne saurait être tenue responsable des conséquences financières résultant des décisions prises sur la base des estimations générées.
-        <br><br>
-        La responsabilité de la société ne pourra être engagée au titre d'un manque à gagner, d'une perte d'exploitation, d'une perte de chance, d'un retard ou d'une absence d'amortissement, ni au titre de tout préjudice indirect ou immatériel.
-        <br><br>
-        En tout état de cause, la responsabilité totale de la société au titre de l'utilisation du simulateur, toutes causes confondues, ne pourra excéder un montant symbolique correspondant à l'utilisation gratuite de l'outil.
-      </div>
-    </div>
-
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 7 – Absence d'engagement contractuel et consentement</div>
-      <div class="cgu-article-body">
-        L'utilisateur professionnel reconnaît expressément que le simulateur constitue un outil standardisé et qu'il ne saurait se substituer à une analyse personnalisée de sa situation économique. Il déclare ne pas fonder sa décision d'investissement exclusivement sur les estimations générées et reconnaît que celles-ci ne présentent pas un caractère déterminant de son consentement. Il conserve la responsabilité exclusive de son appréciation économique et stratégique.
-        <br><br>
-        Les résultats générés par le simulateur ne constituent ni une offre ferme, ni un engagement unilatéral, ni un élément contractuel opposable. Seuls les engagements expressément stipulés dans un contrat distinct signé entre les parties pourront engager la société.
-      </div>
-    </div>
-
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 8 – Traitement des données</div>
-      <div class="cgu-article-body">
-        Les informations saisies par l'utilisateur sont utilisées exclusivement pour permettre la génération instantanée du calcul de simulation. Aucune donnée n'est enregistrée dans une base de données, conservée après l'affichage des résultats, exploitée à des fins commerciales, statistiques ou marketing, ni transmise à des tiers. Les informations sont supprimées automatiquement après exécution du calcul. Le simulateur fonctionne sans constitution de fichier client.
-      </div>
-    </div>
-
-    <div class="cgu-article">
-      <div class="cgu-article-title">Article 9 – Acceptation</div>
-      <div class="cgu-article-body">
-        L'activation du bouton « Lancer la simulation » après validation de la case dédiée vaut acceptation pleine et entière des présentes conditions ainsi que reconnaissance expresse du caractère hypothétique, indicatif et non garanti des indicateurs générés, y compris de toute estimation relative au retour sur investissement, à la durée d'amortissement et au gain potentiel différé.
-      </div>
-    </div>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="cgu-footer">
-    © AKAIRO – Simulateur de rentabilité
-  </footer>
+<script>
+  function switchTab(tabId, el) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('section-' + tabId).classList.add('active');
+    el.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
