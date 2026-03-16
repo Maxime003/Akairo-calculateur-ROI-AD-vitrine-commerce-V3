@@ -597,85 +597,8 @@
   <div class="section" id="section-sources">
 
     <div class="sources-intro">
-      <h2>Modèle de calcul & Sources</h2>
+      <h2>Sources</h2>
       <p>Comprendre d'où viennent les chiffres, quelles études ont servi de base, et comment le moteur de calcul transforme vos données en projection de CA.</p>
-    </div>
-
-    <!-- Modèle V3.1 -->
-    <div class="model-block">
-      <h3>Le modèle V3.1 — Principe de calcul</h3>
-      <p class="model-subtitle">Comment vos données sont transformées en CA additionnel estimé</p>
-
-      <div class="model-formula">
-        <div class="formula-label">Formule centrale</div>
-        <div class="formula-line">ΔV = V × u<sub>T</sub> × k</div>
-        <div class="formula-comment">// Ventes supplémentaires par mois</div>
-        <br>
-        <div class="formula-line">ΔCA = ΔV × P</div>
-        <div class="formula-comment">// CA additionnel mensuel — panier constant</div>
-      </div>
-
-      <div class="model-params">
-        <div class="param-card">
-          <div class="param-name">V</div>
-          <div class="param-desc">Ventes mensuelles actuelles (transactions)</div>
-        </div>
-        <div class="param-card">
-          <div class="param-name">u<sub>T</sub></div>
-          <div class="param-desc">Hausse de trafic estimée — 10% par défaut</div>
-        </div>
-        <div class="param-card">
-          <div class="param-name">k = 0,435</div>
-          <div class="param-desc">Constante de conversion relative — taux d'achat des visiteurs incrémentaux</div>
-        </div>
-        <div class="param-card">
-          <div class="param-name">P</div>
-          <div class="param-desc">Panier moyen — constant (non modifié par l'écran)</div>
-        </div>
-        <div class="param-card">
-          <div class="param-name">ΔV</div>
-          <div class="param-desc">Ventes supplémentaires mensuelles estimées</div>
-        </div>
-        <div class="param-card">
-          <div class="param-name">ΔCA</div>
-          <div class="param-desc">CA additionnel mensuel potentiel (HT)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pourquoi k = 0,435 -->
-    <p class="indicators-title">Origine du coefficient k = 0,435</p>
-    <p class="indicators-sub">Ce coefficient calibre la qualité de conversion des visiteurs supplémentaires attirés par l'écran vitrine.</p>
-
-    <table class="indicators-table" style="margin-bottom: 16px;">
-      <thead>
-        <tr>
-          <th>Indicateur observé</th>
-          <th>Valeur</th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Hausse de trafic constatée</td>
-          <td><span class="badge-value">+23%</span></td>
-          <td><a class="source-link" href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">Behavioral Effects of Digital Signage — ResearchGate</a></td>
-        </tr>
-        <tr>
-          <td>Hausse des transactions constatée</td>
-          <td><span class="badge-value">+10%</span></td>
-          <td><a class="source-link" href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">Behavioral Effects of Digital Signage — ResearchGate</a></td>
-        </tr>
-        <tr>
-          <td>Ratio k = % ventes / % trafic</td>
-          <td><span class="badge-value">10% ÷ 23% = 0,435</span></td>
-          <td>Calcul AKAIRO — les nouveaux entrants convertissent à 43,5% du taux habituel</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="section-intro" style="margin-bottom: 40px;">
-      <p><strong>Interprétation :</strong> Un visiteur attiré par l'écran vitrine n'est pas aussi qualifié qu'un client qui pousse naturellement la porte. Le coefficient k traduit cette réalité : le trafic incrémental convertit moins bien que le trafic habituel. Avec +10% de trafic et k = 0,435, on obtient environ +4,35% de transactions supplémentaires — une projection prudente et défendable.</p>
     </div>
 
     <!-- Tableau des indicateurs sectoriels -->
@@ -696,49 +619,49 @@
           <td>Hausse moyenne des ventes sur produits promus</td>
           <td><span class="badge-value">+8,1%</span></td>
           <td>Taux de conversion — 237 campagnes Digital Signage</td>
-          <td><a class="source-link" href="https://www.clickz.com/does-in-store-digital-signage-actually-work-four-years-of-data-say-yes/272321/" target="_blank">ClickZ — Four years of data</a></td>
+          <td><a class="source-link" href="https://www.clickz.com/does-in-store-digital-signage-actually-work-four-years-of-data-say-yes/272321/" target="_blank">ClickZ — Quatre ans de données</a></td>
         </tr>
         <tr>
           <td>Hausse max. observée sur ventes promues (vs print)</td>
           <td><span class="badge-value">jusqu'à +33%</span></td>
           <td>Ventes produit — rayons en digital vs print</td>
-          <td><a class="source-link" href="https://moodmedia.com/gb/sight/data-behind-digital-signage/" target="_blank">Mood Media — Data behind Digital Signage</a></td>
+          <td><a class="source-link" href="https://moodmedia.com/gb/sight/data-behind-digital-signage/" target="_blank">Mood Media — Les données derrière la signalétique numérique</a></td>
         </tr>
         <tr>
           <td>Hausse moyenne des ventes après installation</td>
           <td><span class="badge-value">+29,5%</span></td>
           <td>Ventes globales — zones exposées</td>
-          <td><a class="source-link" href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">Samsung Insights — 2025</a></td>
+          <td><a class="source-link" href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">Samsung Insights — 2025, impact du Digital Signage sur le trafic et les ventes retail</a></td>
         </tr>
         <tr>
           <td>Plage d'augmentation de trafic avec Digital Signage</td>
           <td><span class="badge-value">+15% à +30%</span></td>
           <td>Trafic entrant — agrégat multi-études</td>
-          <td><a class="source-link" href="https://opensign.us/blog/digital-signs-boost-foot-traffic" target="_blank">OpenSign — Foot traffic study</a></td>
+          <td><a class="source-link" href="https://opensign.us/blog/digital-signs-boost-foot-traffic" target="_blank">OpenSign — Étude sur le trafic piéton</a></td>
         </tr>
         <tr>
           <td>Part des achats motivés par la vitrine</td>
           <td><span class="badge-value">23% du CA</span></td>
           <td>Sensibilité à la vitrine — décision d'achat</td>
-          <td><a class="source-link" href="https://localscreens.pl/en/blog/the-screen-for-the-shop-window/" target="_blank">LocalScreens — Shop window</a></td>
+          <td><a class="source-link" href="https://localscreens.pl/en/blog/the-screen-for-the-shop-window/" target="_blank">LocalScreens — Vitrine de magasin</a></td>
         </tr>
         <tr>
           <td>Clients déclarant que le Digital Signage influence leur achat</td>
           <td><span class="badge-value">68–70%</span></td>
           <td>Comportement — enquêtes Nielsen & retail</td>
-          <td><a class="source-link" href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">Samsung / Nielsen</a></td>
+          <td><a class="source-link" href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">Samsung / Nielsen — Influence du Digital Signage sur l'achat</a></td>
         </tr>
         <tr>
           <td>Réduction du temps d'attente perçu</td>
           <td><span class="badge-value">jusqu'à −35%</span></td>
           <td>Expérience client</td>
-          <td><a class="source-link" href="https://wovenmedia.com/blog/improve-in-store-experience-and-increase-sales-with-digital-signage/" target="_blank">Milward Brown / Impax Media</a></td>
+          <td><a class="source-link" href="https://wovenmedia.com/blog/improve-in-store-experience-and-increase-sales-with-digital-signage/" target="_blank">Milward Brown / Impax Media — Expérience en magasin et attente perçue</a></td>
         </tr>
         <tr>
           <td>ROI brut moyen pour les marques</td>
           <td><span class="badge-value">+21%</span></td>
           <td>ROI média — investissements écrans vs ventes incrémentales</td>
-          <td><a class="source-link" href="https://www.sixteen-nine.net/2026/01/19/retail-study-offers-empirical-evidence-that-screens-in-stores-really-do-drive-significant-sales-bumps/" target="_blank">Sixteen-Nine — Retail study 2026</a></td>
+          <td><a class="source-link" href="https://www.sixteen-nine.net/2026/01/19/retail-study-offers-empirical-evidence-that-screens-in-stores-really-do-drive-significant-sales-bumps/" target="_blank">Sixteen-Nine — Étude retail 2026</a></td>
         </tr>
         <tr>
           <td>Enseignes voyant un gain significatif Digital vs Print</td>
@@ -749,6 +672,41 @@
       </tbody>
     </table>
 
+    <!-- Pourquoi k = 0,435 -->
+    <p class="indicators-title">Origine du coefficient k = 0,435</p>
+    <p class="indicators-sub">Ce coefficient calibre la qualité de conversion des visiteurs supplémentaires attirés par l'écran vitrine.</p>
+
+    <table class="indicators-table" style="margin-bottom: 16px;">
+      <thead>
+        <tr>
+          <th>Indicateur observé</th>
+          <th>Valeur</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hausse de trafic constatée</td>
+          <td><span class="badge-value">+23%</span></td>
+          <td><a class="source-link" href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">Effets comportementaux de la signalétique numérique — ResearchGate</a></td>
+        </tr>
+        <tr>
+          <td>Hausse des transactions constatée</td>
+          <td><span class="badge-value">+10%</span></td>
+          <td><a class="source-link" href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">Effets comportementaux de la signalétique numérique — ResearchGate</a></td>
+        </tr>
+        <tr>
+          <td>Ratio k = % ventes / % trafic</td>
+          <td><span class="badge-value">10% ÷ 23% = 0,435</span></td>
+          <td>Calcul AKAIRO — les nouveaux entrants convertissent à 43,5% du taux habituel</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-intro" style="margin-bottom: 40px;">
+      <p><strong>Interprétation :</strong> Un visiteur attiré par l'écran vitrine n'est pas aussi qualifié qu'un client qui pousse naturellement la porte. Le coefficient k traduit cette réalité : le trafic incrémental convertit moins bien que le trafic habituel. Avec +10% de trafic et k = 0,435, on obtient environ +4,35% de transactions supplémentaires — une projection prudente et défendable.</p>
+    </div>
+
     <!-- Cartes sources principales -->
     <p class="sources-title">Sources principales</p>
     <p class="sources-sub">Les études et publications académiques sur lesquelles repose le calibrage du modèle.</p>
@@ -756,42 +714,42 @@
     <div class="sources-grid">
       <div class="source-card">
         <div class="source-card-label">Académique</div>
-        <div class="source-card-title">Behavioral Effects of Digital Signage</div>
+        <div class="source-card-title">Effets comportementaux de la signalétique numérique</div>
         <div class="source-card-meta">Étude académique parue sur ResearchGate. Mesure les effets comportementaux des écrans en commerce — trafic +23%, transactions +10%. Base de calibration du coefficient k = 0,435.</div>
         <a href="https://www.researchgate.net/publication/250168733_Behavioral_Effects_of_Digital_Signage" target="_blank">researchgate.net →</a>
       </div>
 
       <div class="source-card">
         <div class="source-card-label">Marché 2025</div>
-        <div class="source-card-title">How Digital Signage Drives Retail Traffic and Sales</div>
+        <div class="source-card-title">Comment la signalétique numérique stimule le trafic et les ventes en magasin</div>
         <div class="source-card-meta">Étude Samsung Insights publiée en décembre 2025. Confirme une hausse moyenne des ventes de +29,5% après installation d'un écran vitrine dans les zones exposées.</div>
         <a href="https://insights.samsung.com/2025/12/30/how-digital-signage-drives-retail-traffic-and-sales-2/" target="_blank">insights.samsung.com →</a>
       </div>
 
       <div class="source-card">
         <div class="source-card-label">Terrain — 4 ans</div>
-        <div class="source-card-title">Does In-Store Digital Signage Actually Work?</div>
+        <div class="source-card-title">La signalétique numérique en magasin fonctionne-t-elle vraiment ?</div>
         <div class="source-card-meta">Analyse de 237 campagnes Digital Signage chez une grande enseigne, sur 4 ans de données caisse. Hausse moyenne de +8,1% sur les ventes de produits promus.</div>
         <a href="https://www.clickz.com/does-in-store-digital-signage-actually-work-four-years-of-data-say-yes/272321/" target="_blank">clickz.com →</a>
       </div>
 
       <div class="source-card">
         <div class="source-card-label">Retail 2026</div>
-        <div class="source-card-title">Retail Study — Empirical Evidence on Screen Impact</div>
+        <div class="source-card-title">Étude retail — preuves empiriques de l’impact des écrans</div>
         <div class="source-card-meta">Étude publiée par Sixteen-Nine en janvier 2026. Documente un ROI brut moyen de +21% pour les marques ayant investi dans des écrans en point de vente.</div>
         <a href="https://www.sixteen-nine.net/2026/01/19/retail-study-offers-empirical-evidence-that-screens-in-stores-really-do-drive-significant-sales-bumps/" target="_blank">sixteen-nine.net →</a>
       </div>
 
       <div class="source-card">
         <div class="source-card-label">Expérience client</div>
-        <div class="source-card-title">Improve In-Store Experience with Digital Signage</div>
+        <div class="source-card-title">Améliorer l’expérience en magasin avec la signalétique numérique</div>
         <div class="source-card-meta">Étude Milward Brown / Impax Media citée par Woven Media. Documente jusqu'à −35% de temps d'attente perçu grâce aux écrans et l'amélioration de la satisfaction client.</div>
         <a href="https://wovenmedia.com/blog/improve-in-store-experience-and-increase-sales-with-digital-signage/" target="_blank">wovenmedia.com →</a>
       </div>
 
       <div class="source-card">
         <div class="source-card-label">Vitrine & décision</div>
-        <div class="source-card-title">The Screen for the Shop Window</div>
+        <div class="source-card-title">L’écran pour la vitrine de magasin</div>
         <div class="source-card-meta">Analyse LocalScreens sur le rôle de la vitrine dans la décision d'achat. Jusqu'à 23% du CA d'un magasin peut être directement sensible à la qualité et l'animation de la vitrine.</div>
         <a href="https://localscreens.pl/en/blog/the-screen-for-the-shop-window/" target="_blank">localscreens.pl →</a>
       </div>
