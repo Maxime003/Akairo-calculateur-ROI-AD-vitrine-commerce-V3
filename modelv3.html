@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modèle V3.1 — Impact CA — AKAIRO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #DE0B19;
+      --dark: #1A1A1A;
+      --green: #2a850e;
+      --bg: #ffffff;
+      --bg2: #F5F5F5;
+      --text: #1A1A1A;
+      --text2: #666666;
+      --border: rgba(0,0,0,0.10);
+      --border2: rgba(0,0,0,0.18);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A1A1A;
+        --bg2: #252525;
+        --text: #F0F0F0;
+        --text2: #AAAAAA;
+        --border: rgba(255,255,255,0.10);
+        --border2: rgba(255,255,255,0.18);
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    .hero { background: var(--dark); color: #fff; padding: 2rem 1.75rem 1.75rem; border-radius: var(--radius-lg); margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 100%; background: var(--red); opacity: 0.13; clip-path: polygon(40% 0, 100% 0, 100% 100%, 0% 100%); }
+    .hero-logo { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .hero-logo span { color: rgba(255,255,255,0.3); margin-left: 8px; font-weight: 400; letter-spacing: 0; font-size: 11px; text-transform: none; }
+    .hero h1 { font-size: 24px; font-weight: 500; color: #fff; margin-bottom: 8px; }
+    .hero p { font-size: 13px; color: rgba(255,255,255,0.5); max-width: 500px; }
+
+    .nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .nav-btn { font-size: 12px; font-family: 'Outfit', sans-serif; padding: 6px 14px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); color: var(--text2); cursor: pointer; transition: all 0.15s; }
+    .nav-btn:hover, .nav-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+
+    .section { margin-bottom: 2.5rem; scroll-margin-top: 1rem; }
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+    .section-title { font-size: 20px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+    .section-body { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 1rem; }
+
+    .divider { height: 0.5px; background: var(--border); margin: 2rem 0; }
+
+    .principle-box { background: var(--bg2); border-left: 3px solid var(--red); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 14px; color: var(--text); line-height: 1.6; }
+
+    .inputs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+    .input-card { background: var(--bg2); border-radius: var(--radius-md); padding: 0.75rem 1rem; border: 0.5px solid var(--border); }
+    .input-card .tag { font-size: 22px; font-weight: 500; color: var(--red); line-height: 1; margin-bottom: 6px; }
+    .input-card .lbl { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+    .input-card .desc { font-size: 11px; color: var(--text2); line-height: 1.4; }
+    .input-card .def { font-size: 11px; color: var(--text2); margin-top: 6px; }
+    .input-card .def span { font-weight: 500; color: var(--text); }
+
+    .formula-block { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 10px; }
+    .formula-header { padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: var(--bg2); }
+    .formula-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .formula-eq { font-size: 13px; font-family: 'Courier New', monospace; color: var(--red); background: rgba(222,11,25,0.08); padding: 4px 10px; border-radius: var(--radius-md); white-space: nowrap; }
+    .formula-body { padding: 0.75rem 1rem; }
+    .formula-example { font-size: 12px; color: var(--text2); margin-bottom: 4px; }
+    .formula-result { font-size: 14px; font-weight: 500; color: var(--green); }
+    .formula-note { font-size: 11px; color: var(--text2); margin-top: 6px; line-height: 1.5; }
+
+    .k-box { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .k-number { font-size: 48px; font-weight: 500; color: var(--red); line-height: 1; margin-bottom: 8px; }
+    .k-label { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+    .k-desc { font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 1rem; }
+    .k-source { font-size: 11px; color: var(--text2); font-style: italic; }
+
+    .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12px; }
+    .bar-label { width: 130px; color: var(--text2); flex-shrink: 0; }
+    .bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 4px; }
+    .bar-val { width: 50px; text-align: right; font-weight: 500; color: var(--text); }
+
+    .simulator { background: var(--bg2); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; border: 0.5px solid var(--border); }
+    .sim-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 1.25rem; }
+    .sim-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .sim-row label { font-size: 12px; color: var(--text2); width: 170px; flex-shrink: 0; }
+    .sim-row input[type=range] { flex: 1; accent-color: var(--red); }
+    .sim-row .val { font-size: 12px; font-weight: 500; color: var(--text); width: 70px; text-align: right; }
+    .sim-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-top: 1.25rem; }
+    .sim-card { background: var(--bg); border-radius: var(--radius-md); padding: 0.85rem; text-align: center; border: 0.5px solid var(--border); }
+    .sim-card .sc-label { font-size: 11px; color: var(--text2); margin-bottom: 4px; }
+    .sim-card .sc-val { font-size: 20px; font-weight: 500; color: var(--red); }
+    .sim-card .sc-sub { font-size: 10px; color: var(--text2); margin-top: 2px; }
+
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .ref-table th { text-align: left; padding: 10px 12px; font-weight: 500; font-size: 11px; background: var(--dark); color: rgba(255,255,255,0.75); }
+    .ref-table td { padding: 9px 12px; border-bottom: 0.5px solid var(--border); color: var(--text); }
+    .ref-table tr:nth-child(even) td { background: var(--bg2); }
+    .ref-table .num { font-family: 'Courier New', monospace; color: var(--red); font-weight: 500; }
+
+    .limits-list { list-style: none; }
+    .limits-list li { display: flex; gap: 16px; padding: 12px 0; border-bottom: 0.5px solid var(--border); font-size: 13px; line-height: 1.6; }
+    .limits-list li:last-child { border-bottom: none; }
+    .limits-list .lim-title { font-weight: 500; color: var(--text); width: 140px; flex-shrink: 0; }
+    .limits-list .lim-desc { color: var(--text2); }
+
+    .warning-box { background: var(--bg2); border-left: 3px solid var(--red); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 0.85rem 1rem; font-size: 13px; color: var(--text2); line-height: 1.6; margin-top: 1rem; }
+
+    .footer { text-align: center; font-size: 11px; color: var(--text2); padding-top: 2rem; border-top: 0.5px solid var(--border); }
+    .footer strong { color: var(--red); }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 18px; }
+      .formula-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .sim-row label { width: 120px; font-size: 11px; }
+      .limits-list li { flex-direction: column; gap: 4px; }
+      .limits-list .lim-title { width: auto; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-logo">AKAIRO <span>Document interne — Usage managers</span></div>
+    <h1>Modèle de calcul V3.1 — Impact CA</h1>
+    <p>Comprendre les formules, constantes et indicateurs du simulateur de rentabilité</p>
+  </div>
+
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="goTo('s1', this)">Principe</button>
+    <button class="nav-btn" onclick="goTo('s2', this)">Données</button>
+    <button class="nav-btn" onclick="goTo('s3', this)">Constante K</button>
+    <button class="nav-btn" onclick="goTo('s4', this)">Formules</button>
+    <button class="nav-btn" onclick="goTo('s5', this)">Simulateur</button>
+    <button class="nav-btn" onclick="goTo('s6', this)">Cas validés</button>
+    <button class="nav-btn" onclick="goTo('s7', this)">Limites</button>
+  </div>
+
+  <!-- 01 — PRINCIPE -->
+  <div id="s1" class="section">
+    <div class="section-label">01 — Objectif</div>
+    <div class="section-title">Pourquoi le V3.1 ?</div>
+    <div class="section-body">L'ancienne version (V2) produisait des gains de +72% de CA — irrecevables par les prospects. Le V3.1 génère des estimations conservatives et défendables, de l'ordre de +4,4% avec les paramètres par défaut.</div>
+    <div class="principle-box">
+      <strong>Principe fondamental :</strong> l'écran attire du trafic supplémentaire, mais ces nouveaux visiteurs convertissent moins bien que les habitués. Le panier moyen reste inchangé.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 02 — DONNÉES -->
+  <div id="s2" class="section">
+    <div class="section-label">02 — Entrées</div>
+    <div class="section-title">Données saisies par l'utilisateur</div>
+    <div class="inputs-grid">
+      <div class="input-card"><div class="tag">T</div><div class="lbl">Trafic mensuel</div><div class="desc">Visiteurs entrant dans le point de vente / mois</div><div class="def">Défaut <span>1 000</span></div></div>
+      <div class="input-card"><div class="tag">V</div><div class="lbl">Ventes mensuelles</div><div class="desc">Nombre de transactions réalisées / mois</div><div class="def">Défaut <span>100</span></div></div>
+      <div class="input-card"><div class="tag">P</div><div class="lbl">Panier moyen</div><div class="desc">Montant moyen dépensé par client (€)</div><div class="def">Défaut <span>50 €</span></div></div>
+      <div class="input-card"><div class="tag">uT</div><div class="lbl">Hausse de trafic</div><div class="desc">% d'augmentation du trafic estimé grâce à l'écran</div><div class="def">Défaut <span>10 %</span></div></div>
+      <div class="input-card"><div class="tag">I</div><div class="lbl">Investissement</div><div class="desc">Coût d'acquisition de l'écran (achat comptant)</div><div class="def">Défaut <span>3 500 €</span></div></div>
+      <div class="input-card"><div class="tag">L</div><div class="lbl">Licence IDPLAY</div><div class="desc">Coût mensuel logiciel d'affichage</div><div class="def">Défaut <span>29 €/mois</span></div></div>
+    </div>
+    <div class="section-body" style="font-size:12px;">En mode Location RSE, un loyer mensuel de 145 €/mois (matériel uniquement) s'ajoute. La licence IDPLAY reste séparée dans les deux modes.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 03 — CONSTANTE K -->
+  <div id="s3" class="section">
+    <div class="section-label">03 — Constante</div>
+    <div class="section-title">La constante K = 0,435</div>
+    <div class="section-body">C'est le paramètre central du modèle. Il traduit le fait que le trafic incrémental convertit à 43,5% du taux de conversion habituel du magasin.</div>
+    <div class="k-box">
+      <div class="k-number">0,435</div>
+      <div class="k-label">Taux de conversion relatif du trafic incrémental</div>
+      <div class="k-desc">Un commerce avec 10% de taux de conversion (100 ventes / 1 000 visiteurs). L'écran attire 100 visiteurs supplémentaires (+10%). Ces nouveaux visiteurs convertissent à <strong>10% × 0,435 = 4,35%</strong> seulement. Résultat : +4,35 ventes supplémentaires, pas +10.</div>
+      <div class="bar-row" style="margin-bottom:8px; margin-top:1rem;">
+        <div class="bar-label">Clients habituels</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%; background: var(--dark);"></div></div>
+        <div class="bar-val">10 %</div>
+      </div>
+      <div class="bar-row" style="margin-bottom:1rem;">
+        <div class="bar-label">Nouveaux visiteurs</div>
+        <div class="bar-track"><div class="bar-fill" style="width:43.5%; background: var(--red);"></div></div>
+        <div class="bar-val">4,35 %</div>
+      </div>
+      <div class="k-source">Constante établie sur la base des moyennes observées chez les clients AKAIRO et des analyses sectorielles Digital Signage 2024.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 04 — FORMULES -->
+  <div id="s4" class="section">
+    <div class="section-label">04 — Formules</div>
+    <div class="section-title">Calculs détaillés</div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">Ventes supplémentaires / mois</span><span class="formula-eq">deltaV = V × uT × K</span></div>
+      <div class="formula-body">
+        <div class="formula-example">100 × 0,10 × 0,435</div>
+        <div class="formula-result">= +4,35 ventes/mois</div>
+        <div class="formula-note">Nombre de transactions additionnelles générées par le trafic incrémental.</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">CA additionnel mensuel</span><span class="formula-eq">deltaCA = deltaV × P</span></div>
+      <div class="formula-body">
+        <div class="formula-example">4,35 × 50 €</div>
+        <div class="formula-result">= 217,50 €/mois</div>
+        <div class="formula-note">CA supplémentaire généré chaque mois.</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">CA additionnel annuel</span><span class="formula-eq">deltaCA × 12</span></div>
+      <div class="formula-body">
+        <div class="formula-example">217,50 × 12</div>
+        <div class="formula-result">= 2 610 €/an</div>
+        <div class="formula-note">Indicateur principal affiché en grand dans le simulateur.</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">CA additionnel sur 3 ans</span><span class="formula-eq">deltaCA × 36</span></div>
+      <div class="formula-body">
+        <div class="formula-example">217,50 × 36</div>
+        <div class="formula-result">= 7 830 €</div>
+        <div class="formula-note">Rend le bénéfice total cumulé plus impactant commercialement.</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">CA net des coûts mensuels</span><span class="formula-eq">deltaCA − L</span></div>
+      <div class="formula-body">
+        <div class="formula-example">217,50 − 29</div>
+        <div class="formula-result">= +188,50 €/mois</div>
+        <div class="formula-note">CA additionnel une fois la licence IDPLAY déduite. En location : deltaCA − (loyer + licence).</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">Couverture de l'investissement</span><span class="formula-eq">I ÷ CA net mensuel</span></div>
+      <div class="formula-body">
+        <div class="formula-example">3 500 ÷ 188,50</div>
+        <div class="formula-result">= 19 mois</div>
+        <div class="formula-note">Nombre de mois pour que le CA net couvre l'investissement initial.</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">Coût journalier (achat comptant)</span><span class="formula-eq">(I + L×36) ÷ 1 095</span></div>
+      <div class="formula-body">
+        <div class="formula-example">(3 500 + 1 044) ÷ 1 095</div>
+        <div class="formula-result">= 4,15 €/jour</div>
+        <div class="formula-note">Base : 30,42 j/mois (365÷12), durée 36 mois = 1 095 jours. En location : (loyer + L) ÷ 30,42.</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header"><span class="formula-name">Coût de l'attente</span><span class="formula-eq">deltaCA × 6</span></div>
+      <div class="formula-body">
+        <div class="formula-example">217,50 × 6</div>
+        <div class="formula-result">= 1 305 €</div>
+        <div class="formula-note">CA potentiel perdu si le projet est reporté de 6 mois. Objectif : créer une urgence commerciale.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 05 — SIMULATEUR -->
+  <div id="s5" class="section">
+    <div class="section-label">05 — Simulateur</div>
+    <div class="section-title">Testez les formules en temps réel</div>
+    <div class="simulator">
+      <div class="sim-title">Ajustez les paramètres pour voir les calculs s'actualiser</div>
+      <div class="sim-row"><label>Trafic mensuel (T)</label><input type="range" id="sT" min="200" max="10000" step="100" value="1000"><span class="val" id="vT">1 000</span></div>
+      <div class="sim-row"><label>Ventes mensuelles (V)</label><input type="range" id="sV" min="10" max="1000" step="10" value="100"><span class="val" id="vV">100</span></div>
+      <div class="sim-row"><label>Panier moyen — P (€)</label><input type="range" id="sP" min="10" max="200" step="5" value="50"><span class="val" id="vP">50 €</span></div>
+      <div class="sim-row"><label>Hausse trafic — uT (%)</label><input type="range" id="sUT" min="1" max="30" step="1" value="10"><span class="val" id="vUT">10 %</span></div>
+      <div class="sim-row"><label>Investissement — I (€)</label><input type="range" id="sI" min="0" max="10000" step="500" value="3500"><span class="val" id="vI">3 500 €</span></div>
+      <div class="sim-results">
+        <div class="sim-card"><div class="sc-label">Ventes supp./mois</div><div class="sc-val" id="rDV">+4,4</div><div class="sc-sub">transactions</div></div>
+        <div class="sim-card"><div class="sc-label">CA additionnel/mois</div><div class="sc-val" id="rCA">218 €</div><div class="sc-sub">mensuel</div></div>
+        <div class="sim-card"><div class="sc-label">CA additionnel/an</div><div class="sc-val" id="rCAY">2 610 €</div><div class="sc-sub">annuel</div></div>
+        <div class="sim-card"><div class="sc-label">CA net des coûts</div><div class="sc-val" id="rNet">+189 €</div><div class="sc-sub">/mois</div></div>
+        <div class="sim-card"><div class="sc-label">Couverture invest.</div><div class="sc-val" id="rCov">19 mois</div><div class="sc-sub">sur CA net</div></div>
+        <div class="sim-card"><div class="sc-label">Coût journalier</div><div class="sc-val" id="rJour">4,15 €/j</div><div class="sc-sub">sur 36 mois</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 06 — CAS DE RÉFÉRENCE -->
+  <div id="s6" class="section">
+    <div class="section-label">06 — Validation</div>
+    <div class="section-title">Cas de référence validés</div>
+    <div class="section-body">Ces trois cas servent de base de validation. Tout développement futur du calculateur doit produire exactement ces résultats.</div>
+    <div style="overflow-x:auto;">
+      <table class="ref-table">
+        <tr>
+          <th style="min-width:180px;">Indicateur</th>
+          <th>Cas 1 — T=1k V=100 P=50€ uT=10%</th>
+          <th>Cas 2 — T=5k V=600 P=35€ uT=10%</th>
+          <th>Cas 3 — T=1k V=100 P=50€ uT=20%</th>
+        </tr>
+        <tr><td>Ventes supp./mois</td><td class="num">+4,4</td><td class="num">+26,1</td><td class="num">+8,7</td></tr>
+        <tr><td>CA additionnel mensuel</td><td class="num">217,50 €</td><td class="num">913,50 €</td><td class="num">435,00 €</td></tr>
+        <tr><td>CA additionnel annuel</td><td class="num">2 610 €</td><td class="num">10 962 €</td><td class="num">5 220 €</td></tr>
+        <tr><td>CA additionnel 3 ans</td><td class="num">7 830 €</td><td class="num">32 886 €</td><td class="num">15 660 €</td></tr>
+        <tr><td>CA net des coûts (L=29€)</td><td class="num">188,50 €/mois</td><td class="num">884,50 €/mois</td><td class="num">406,00 €/mois</td></tr>
+        <tr><td>Couverture invest. (I=3 500€)</td><td class="num">19 mois</td><td class="num">4 mois</td><td class="num">9 mois</td></tr>
+        <tr><td>Coût journalier</td><td class="num">4,15 €/j</td><td class="num">4,15 €/j</td><td class="num">4,15 €/j</td></tr>
+        <tr><td>Coût de l'attente (6 mois)</td><td class="num">1 305 €</td><td class="num">5 481 €</td><td class="num">2 610 €</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 07 — LIMITES -->
+  <div id="s7" class="section">
+    <div class="section-label">07 — Limites</div>
+    <div class="section-title">Ce que le modèle ne couvre pas</div>
+    <ul class="limits-list">
+      <li><span class="lim-title">Marge brute</span><span class="lim-desc">Le calculateur travaille sur le CA brut. La rentabilité réelle dépend de la marge propre à chaque commerce — non modélisée.</span></li>
+      <li><span class="lim-title">Saisonnalité</span><span class="lim-desc">Le modèle applique un taux constant sur 12/36 mois, sans tenir compte des variations saisonnières d'activité.</span></li>
+      <li><span class="lim-title">Concurrence</span><span class="lim-desc">La hausse de trafic (uT) est estimée par le commercial. Elle dépend de l'emplacement, de la visibilité vitrine et de la qualité des contenus diffusés.</span></li>
+      <li><span class="lim-title">Comportement d'achat</span><span class="lim-desc">Le panier moyen est supposé constant. L'écran peut influencer les achats complémentaires — non modélisé.</span></li>
+      <li><span class="lim-title">Données déclaratives</span><span class="lim-desc">Le modèle repose sur les chiffres saisis par le commercial. Une inexactitude sur T, V ou P altère l'ensemble des résultats.</span></li>
+    </ul>
+    <div class="warning-box">
+      <strong>À communiquer aux clients :</strong> tous les indicateurs sont fournis à titre illustratif. Ils ne constituent ni une garantie de performance, ni un engagement contractuel. Les conditions d'utilisation complètes sont accessibles sur le simulateur en ligne.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="footer">
+    <strong>AKAIRO</strong> — Modèle V3.1 Impact CA — Document interne — Usage managers
+  </div>
+
+</div>
+
+<script>
+  function goTo(id, btn) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  const K = 0.435;
+  const L = 29;
+
+  function fmt(n) {
+    return new Intl.NumberFormat('fr-FR').format(Math.round(n));
+  }
+  function fmtE(n) {
+    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+  }
+
+  function update() {
+    const T  = +document.getElementById('sT').value;
+    const V  = +document.getElementById('sV').value;
+    const P  = +document.getElementById('sP').value;
+    const uT = +document.getElementById('sUT').value / 100;
+    const I  = +document.getElementById('sI').value;
+
+    document.getElementById('vT').textContent  = fmt(T);
+    document.getElementById('vV').textContent  = fmt(V);
+    document.getElementById('vP').textContent  = fmt(P) + ' €';
+    document.getElementById('vUT').textContent = Math.round(uT * 100) + ' %';
+    document.getElementById('vI').textContent  = fmtE(I);
+
+    const deltaV  = V * uT * K;
+    const deltaCA = deltaV * P;
+    const caNet   = deltaCA - L;
+    const caY     = deltaCA * 12;
+    const jours   = 36 * (365 / 12);
+    const coutJour = (I + L * 36) / jours;
+
+    let covText, covColor;
+    if (I <= 0) {
+      covText  = caNet > 0 ? 'Immédiat' : 'N/A';
+      covColor = caNet > 0 ? '#2a850e' : '#888';
+    } else if (caNet <= 0) {
+      covText  = 'Non atteignable';
+      covColor = '#888';
+    } else {
+      const m = Math.round(I / caNet);
+      covText  = m > 60 ? '> 5 ans' : m + ' mois';
+      covColor = m <= 18 ? '#2a850e' : '#DE0B19';
+    }
+
+    document.getElementById('rDV').textContent   = '+' + deltaV.toFixed(1);
+    document.getElementById('rCA').textContent   = fmtE(deltaCA);
+    document.getElementById('rCAY').textContent  = fmtE(caY);
+    document.getElementById('rNet').textContent  = (caNet >= 0 ? '+' : '') + fmtE(caNet);
+    document.getElementById('rNet').style.color  = caNet >= 0 ? '#2a850e' : '#DE0B19';
+    document.getElementById('rCov').textContent  = covText;
+    document.getElementById('rCov').style.color  = covColor;
+    document.getElementById('rJour').textContent = coutJour.toFixed(2).replace('.', ',') + ' €/j';
+  }
+
+  ['sT','sV','sP','sUT','sI'].forEach(id => {
+    document.getElementById(id).addEventListener('input', update);
+  });
+  update();
+</script>
+</body>
+</html>
