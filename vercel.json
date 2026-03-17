@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/modelv3", "destination": "/modelv3.html" },
+    { "source": "/modelv3/", "destination": "/modelv3.html" }
+  ]
+}
