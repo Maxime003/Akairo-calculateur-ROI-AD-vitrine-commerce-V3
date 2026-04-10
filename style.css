@@ -1,8 +1,21 @@
 /* === CALCULATEUR ROI AKAIRO - STYLE COMPLET V3.1 === */
 
+.akairo-page-header {
+  width: 100vw;
+  margin: 0 calc(50% - 50vw) 32px;
+  background: #FFFFFF;
+  line-height: 0;
+}
+
+.akairo-page-header-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .akairo-calculator-wrapper {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 0 auto 40px;
   padding: 40px;
   background: #FFFFFF;
   border-radius: 12px;
@@ -331,6 +344,16 @@
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+  .akairo-page-header { margin-bottom: 24px; }
+  .akairo-calculator-wrapper {
+    margin: 0 16px 32px;
+    padding: 24px 18px;
+  }
+  .calculator-header { margin-bottom: 28px; }
+  .calculator-header h2 { font-size: 26px; }
+  .calculator-form { padding: 24px 18px; }
+  .finance-header { flex-direction: column; align-items: stretch; gap: 16px; }
+  .toggle-container { width: 100%; }
   .results-grid { grid-template-columns: 1fr; }
   .roi-grid { grid-template-columns: 1fr 1fr; }
   .input-group-row { flex-direction: column; gap: 20px; }
